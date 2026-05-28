@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{ site.LanguageCode | default "en-us" }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    {{/* Zero-JS theme toggle: a focusable checkbox flips the tokens via :has().
+         Default is dark; checking it switches to light. No script anywhere. */}}
+    <input type="checkbox" id="theme-switch" class="theme-switch" aria-label="Switch to light theme">
+    <div class="site">
+      <header class="nav">
+        <div class="shell nav-row">
+          <a class="nav-brand" href="{{ "/" | relURL }}">joeagent<span class="dot">.</span>dev</a>
+          <label for="theme-switch" class="theme-toggle" title="Toggle light and dark theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </label>
+        </div>
+      </header>
+      <main class="site-main" id="main">
+        <div class="shell">
+          {{ block "main" . }}{{ end }}
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

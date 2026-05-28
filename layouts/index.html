@@ -1,0 +1,116 @@
+{{ define "main" }}
+<div class="band">
+
+  {{/* 1. What Joe is, in one sentence. */}}
+  <section class="masthead" aria-label="Introduction">
+    <div class="label masthead-label">Kubernetes AI copilot</div>
+    <h1 class="masthead-title">A Kubernetes AI copilot you run locally, with your own LLM key.</h1>
+    <p class="masthead-lede">
+      Joe Operates Everything. It investigates clusters, diagnoses problems, and
+      drafts changes &mdash; applying them when you ask. It runs on your own
+      machine and talks to your model provider directly.
+    </p>
+  </section>
+
+  {{/* 2. Two-binary distribution model. */}}
+  <section class="band-section" aria-label="Distribution">
+    <div class="label band-heading">Two binaries</div>
+    <p class="section-lede">A clean client/server split. The CLI stays thin; all the agent logic lives in the server.</p>
+    <div class="card-grid card-grid-2">
+      <div class="card">
+        <div class="card-head">
+          <span class="card-name">joe</span>
+          <span class="pill">CLI</span>
+        </div>
+        <p class="card-desc">
+          The thin client. It talks to <code>joe-core</code> over a local API
+          and stays out of the way &mdash; no agent logic ships here.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <span class="card-name">joe-core</span>
+          <span class="pill">server</span>
+        </div>
+        <p class="card-desc">
+          The server. It hosts the agentic runtime and serves an embedded React
+          UI compiled into the binary with <code>go:embed</code> &mdash; one
+          file, no asset directory to deploy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {{/* 3. Security model highlights. */}}
+  <section class="band-section" aria-label="Security model">
+    <div class="label band-heading">Security model</div>
+    <p class="section-lede">Joe is built to operate inside boundaries, not around them.</p>
+    <dl class="feature-list">
+      <div class="feature">
+        <dt>Zones</dt>
+        <dd>Explicit boundaries that scope what Joe is allowed to reach. Access is granted per zone, not all at once.</dd>
+      </div>
+      <div class="feature">
+        <dt>RBAC middleware</dt>
+        <dd>Every action passes through role-based access control before it runs. Permission is checked at the boundary, in code.</dd>
+      </div>
+      <div class="feature">
+        <dt>MCP server</dt>
+        <dd>Capabilities are exposed over the Model Context Protocol &mdash; tools are declared, typed, and inspectable.</dd>
+      </div>
+      <div class="feature">
+        <dt>Local tool execution</dt>
+        <dd>Tools execute on your machine, inside Joe &mdash; not in a vendor cloud. The execution boundary stays local.</dd>
+      </div>
+    </dl>
+  </section>
+
+  {{/* 4. OASIS evaluation — prominent. */}}
+  <section class="band-section" aria-label="Evaluation">
+    <div class="callout">
+      <div class="label callout-label">Evaluated end-to-end</div>
+      <h2 class="callout-title">Tested against the OASIS Software Infrastructure profile</h2>
+      <p class="callout-body">
+        Joe has been evaluated end-to-end against
+        <a href="{{ site.Params.oasisURL }}" rel="noopener">OASIS</a> &mdash;
+        the open standard for testing whether an autonomous agent stays inside
+        its rules. Binary safety gates, no &ldquo;mostly safe&rdquo; tier, and
+        independent verification of the actual system state. No LLM in the
+        verification loop.
+      </p>
+      <div class="callout-actions">
+        <a class="btn" href="{{ site.Params.oasisURL }}" rel="noopener">Read the standard &rarr;</a>
+        {{/* PLACEHOLDER: OASIS evaluation results page. URL is stable; the page is being republished. */}}
+        <a class="btn btn-ghost" href="{{ site.Params.oasisEvalURL }}" rel="noopener">
+          See Joe's results{{ if site.Params.oasisEvalPending }} <span class="tag-soon">republishing</span>{{ end }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{/* 5. Install instructions — PLACEHOLDER until Stream A.4 lands install.sh. */}}
+  <section class="band-section" aria-label="Install">
+    <div class="label band-heading">Install</div>
+    {{/* PLACEHOLDER: install command lives in hugo.toml -> params.installCommand.
+         Flip params.installPending to false once Stream A.4 ships install.sh. */}}
+    <div class="terminal" aria-label="Install command">
+      <div class="terminal-bar" aria-hidden="true">
+        <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      </div>
+      <pre class="terminal-body"><code><span class="prompt">$</span> {{ site.Params.installCommand }}</code></pre>
+    </div>
+    {{ if site.Params.installPending }}
+    <p class="install-note">Install script ships with the first public release.</p>
+    {{ end }}
+  </section>
+
+  {{/* 6 + 7. Repo link + author. */}}
+  <footer class="site-footer" aria-label="Links">
+    {{/* PLACEHOLDER: Joe's public repo URL lives in hugo.toml -> params.repoURL. Known after the public flip. */}}
+    <a href="{{ site.Params.repoURL }}" rel="noopener">{{ site.Params.repoLabel }}</a>
+    <span class="sep">&middot;</span>
+    <span>Built by <a href="{{ site.Params.authorURL }}" rel="me noopener">Jaime Gago</a></span>
+  </footer>
+
+</div>
+{{ end }}
