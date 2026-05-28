@@ -7,8 +7,9 @@
     <h1 class="masthead-title">A Kubernetes AI copilot you run locally, with your own LLM key.</h1>
     <p class="masthead-lede">
       Joe Operates Everything. It investigates clusters, diagnoses problems, and
-      drafts changes &mdash; applying them when you ask. It runs on your own
-      machine and talks to your model provider directly.
+      drafts changes &mdash; applying them when you ask. It runs entirely on your
+      own machine, and <code>joe-core</code> talks to your model provider directly
+      with your key &mdash; never through a vendor cloud of ours.
     </p>
   </section>
 
@@ -108,6 +109,8 @@
   <footer class="site-footer" aria-label="Links">
     {{/* PLACEHOLDER: Joe's public repo URL lives in hugo.toml -> params.repoURL. Known after the public flip. */}}
     <a href="{{ site.Params.repoURL }}" rel="noopener">{{ site.Params.repoLabel }}</a>
+    <span class="sep">&middot;</span>
+    <a href="{{ site.Params.repoURL }}/blob/main/LICENSE" rel="license noopener">Apache-2.0</a>
     <span class="sep">&middot;</span>
     <span>Built by <a href="{{ site.Params.authorURL }}" rel="me noopener">Jaime Gago</a></span>
   </footer>
