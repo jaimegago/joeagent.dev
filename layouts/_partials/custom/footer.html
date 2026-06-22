@@ -1,0 +1,11 @@
+{{- /*
+  Site-wide footer links, injected into Hextra's footer via its custom hook.
+  Hextra renders its own copyright line; this adds the project link row above it.
+  PLACEHOLDER copy — refine at launch. Links read from site params where possible.
+*/ -}}
+<div class="hextra-footer-links" style="display:flex;flex-wrap:wrap;gap:1.25rem;justify-content:center;margin-bottom:0.75rem;font-size:0.9rem;">
+  <a href="{{ .context.Site.Params.repoURL }}" target="_blank" rel="noreferrer">GitHub</a>
+  <a href="{{ "docs" | relURL }}">Docs</a>
+  <a href="{{ .context.Site.Params.repoURL }}/blob/main/LICENSE" target="_blank" rel="noreferrer">License (Apache-2.0)</a>
+  <a href="{{ .context.Site.Params.oasisURL }}" target="_blank" rel="noreferrer">OASIS</a>
+</div>

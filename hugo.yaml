@@ -1,0 +1,131 @@
+# joeagent.dev — Hugo + Hextra configuration.
+#
+# Landing-plus-documentation site for Joe, deployed to GitHub Pages.
+# Theme: Hextra (https://github.com/imfing/hextra), installed as a Hugo module.
+# Docs under /docs are GENERATED at build time by scripts/sync-docs.sh and are
+# NOT committed (see .gitignore + README). Only the landing page and the Safety
+# page are authored directly in this repo.
+
+baseURL: "https://joeagent.dev/"
+title: "Joe"
+languageCode: "en-us"
+defaultContentLanguage: "en"
+
+# robots.txt is carried forward as a committed static file (static/robots.txt),
+# so let Hugo serve that rather than generating one.
+enableRobotsTXT: false
+enableEmoji: false
+enableInlineShortcodes: true
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.146.0"
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      # Hextra's hero/landing shortcodes emit raw HTML.
+      unsafe: true
+  highlight:
+    noClasses: false
+
+outputs:
+  home: [html]
+  page: [html]
+  section: [html]
+
+# Top navigation: Docs, Safety, external GitHub repo, external oasis-spec.
+menu:
+  main:
+    - identifier: docs
+      name: Docs
+      pageRef: /docs
+      weight: 1
+    - identifier: safety
+      name: Safety
+      pageRef: /safety
+      weight: 2
+    - identifier: github
+      name: GitHub
+      # PLACEHOLDER: mirrors params.repoURL below. Update both at the public flip.
+      url: "https://github.com/jaimegago/joe"
+      weight: 3
+      params:
+        icon: github
+    - identifier: oasis
+      name: OASIS
+      url: "https://oasis-spec.dev"
+      weight: 4
+      params:
+        icon: shield-check
+    - name: Search
+      weight: 5
+      params:
+        type: search
+
+params:
+  description: "Joe is a self-hosted AI infrastructure copilot you run with your own LLM provider key. [PLACEHOLDER tagline — rewrite at launch.]"
+
+  # Dark mode is the default per the design brief; toggle stays available.
+  theme:
+    # light | dark | system
+    default: dark
+    displayToggle: true
+
+  navbar:
+    displayTitle: true
+    displayLogo: false
+    width: wide
+
+  # Full-text client-side search (no external service).
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  externalLinkDecoration: true
+
+  # The docs tree is generated and lives in another (not-yet-public) repo, so an
+  # "edit this page" link would point nowhere useful. Off until the source flips.
+  editURL:
+    enable: false
+
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: false
+    width: normal
+
+  page:
+    width: normal
+
+  # ---------------------------------------------------------------------------
+  # PLACEHOLDER VALUES — carried forward from the pre-Hextra config.
+  # Every fill-in point on the site reads from here. Grep the repo for
+  # "PLACEHOLDER" to find these plus the matching markers in content/.
+  # ---------------------------------------------------------------------------
+
+  # PLACEHOLDER: install command. Joe ships build-from-source today; there is no
+  # install.sh yet. When one lands, set installPending = false to drop the caption.
+  installCommand: "curl -fsSL https://joeagent.dev/install.sh | sh"
+  installPending: true
+
+  # PLACEHOLDER: Joe's public GitHub repo. Known after the public flip.
+  # Keep menu.main "github" url (above) in sync with this.
+  repoURL: "https://github.com/jaimegago/joe"
+  repoLabel: "github.com/jaimegago/joe"
+
+  # OASIS standard — live, stable.
+  oasisURL: "https://oasis-spec.dev"
+  # OASIS Software Infrastructure Profile evaluation page for Joe.
+  # No score is published yet; oasisEvalPending gates the "results pending" caption.
+  oasisEvalURL: "https://oasis-spec.dev/evaluations/joe/"
+  oasisEvalPending: true
+
+  # Author site — live.
+  authorURL: "https://jaimegago.dev"

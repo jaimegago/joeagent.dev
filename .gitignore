@@ -1,6 +1,20 @@
-public/
+# Hugo build output (root only — must NOT match the docs/public source tree)
+/public/
+
+# Hugo resource cache
 resources/
+
+# Hugo build lock
 .hugo_build.lock
+
+# Hugo Modules vendor dir (theme is fetched at build time)
+_vendor/
+
+# GENERATED docs tree — produced by scripts/sync-docs.sh, never committed.
+# The committed source is docs/public/ (seed of Joe's docs/public).
+content/docs/
+
+# Tooling / OS artifacts
 .DS_Store
 node_modules/
 .vscode/

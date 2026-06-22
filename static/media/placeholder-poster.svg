@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Demonstration clip placeholder">
+  <rect width="1280" height="720" fill="#16181d"/>
+  <rect x="1" y="1" width="1278" height="718" fill="none" stroke="#2c2f36" stroke-width="2"/>
+  <circle cx="640" cy="330" r="64" fill="none" stroke="#6b7280" stroke-width="4"/>
+  <polygon points="620,300 620,360 672,330" fill="#6b7280"/>
+  <text x="640" y="450" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="34" text-anchor="middle">PLACEHOLDER — demonstration clip</text>
+  <text x="640" y="498" fill="#6b7280" font-family="ui-monospace, monospace" font-size="22" text-anchor="middle">media slot reserved · no clip committed yet</text>
+</svg>

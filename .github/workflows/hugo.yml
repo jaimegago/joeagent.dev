@@ -24,6 +24,12 @@ jobs:
     env:
       HUGO_VERSION: 0.160.1
     steps:
+      # Hextra is a Hugo module, so Go must be available to resolve it.
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+
       - name: Install Hugo CLI
         run: |
           wget -O ${{ runner.temp }}/hugo.deb \
@@ -38,6 +44,19 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
+
+      # Deterministic, pinned theme resolution: download exactly the versions
+      # committed in go.mod / go.sum (Hextra v0.12.3) into the Go module cache
+      # that Hugo reads. This populates the cache without floating the pin — no
+      # bare `hugo mod get`, so a future deploy cannot drift to a newer Hextra.
+      - name: Download pinned modules
+        run: go mod download
+
+      # Single-source the docs tree BEFORE the Hugo build. Reads the seeded
+      # docs/public source by default; the source switch (and the one flip step
+      # to Joe's public repo) lives in scripts/sync-docs.sh.
+      - name: Sync documentation
+        run: ./scripts/sync-docs.sh
 
       - name: Build with Hugo
         env:

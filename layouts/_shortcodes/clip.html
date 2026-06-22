@@ -1,0 +1,40 @@
+{{- /*
+  clip — embed a muted, autoplaying, looping demonstration clip with a poster
+  image and a graceful fallback. Used by the landing-page feature showcase.
+
+  Params:
+    src     (string, required) basename under /media, WITHOUT extension.
+                               Resolves /media/<src>.webm and /media/<src>.mp4.
+    poster  (string)           poster image path under /media; defaults to the
+                               shared placeholder poster.
+    caption (string)           optional caption shown under the clip.
+    alt     (string)           text shown when the clip cannot load / for a11y.
+
+  Media conventions live in static/media/README.md. No real media is committed
+  in the skeleton — these slots are placeholders.
+
+  @example {{< clip src="feature-chat" caption="Chat over the agentic loop." >}}
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- $poster := .Get "poster" | default "placeholder-poster.svg" -}}
+{{- $caption := .Get "caption" -}}
+{{- $alt := .Get "alt" | default "Demonstration clip — coming soon." -}}
+{{- $webm := printf "/media/%s.webm" $src | relURL -}}
+{{- $mp4 := printf "/media/%s.mp4" $src | relURL -}}
+{{- $posterURL := printf "/media/%s" $poster | relURL -}}
+<figure class="joe-clip not-prose" style="margin:1.5rem 0;">
+  <video
+    class="joe-clip__video"
+    style="width:100%;border-radius:0.75rem;border:1px solid rgba(128,128,128,0.25);display:block;"
+    poster="{{ $posterURL }}"
+    autoplay muted loop playsinline preload="none"
+    aria-label="{{ $alt }}">
+    <source src="{{ $webm }}" type="video/webm" />
+    <source src="{{ $mp4 }}" type="video/mp4" />
+    {{/* Graceful fallback when <video> or the sources are unavailable. */}}
+    <img src="{{ $posterURL }}" alt="{{ $alt }}" style="width:100%;border-radius:0.75rem;" />
+  </video>
+  {{- with $caption }}
+  <figcaption style="font-size:0.85rem;opacity:0.7;margin-top:0.5rem;text-align:center;">{{ . }}</figcaption>
+  {{- end }}
+</figure>

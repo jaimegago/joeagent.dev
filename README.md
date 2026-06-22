@@ -1,79 +1,82 @@
 # joeagent.dev
 
-Source for [joeagent.dev](https://joeagent.dev/) — a single static page for Joe,
-a Kubernetes AI copilot you run locally with your own LLM key. Hugo, deployed to
-GitHub Pages from `main` by the workflow at `.github/workflows/hugo.yml`. The
-custom domain is served from `static/CNAME`.
+Source for [joeagent.dev](https://joeagent.dev/) — the landing-plus-documentation site for
+**Joe**, a self-hosted AI infrastructure copilot you run with your own LLM provider key. Built with
+[Hugo](https://gohugo.io/) and the [Hextra](https://github.com/imfing/hextra) theme, deployed to
+GitHub Pages from `main` by `.github/workflows/hugo.yml`. The custom domain is served from
+`static/CNAME`.
 
-## Theme choice
+> This README documents the **website**. It is intentionally separate from Joe's own README, which
+> lives in Joe's repository.
 
-There is no theme directory. For a one-page site, a separate theme is overhead
-with no payoff, so the page is a single rolled layout living directly in
-`layouts/` (`_default/baseof.html`, `partials/head.html`, `index.html`, plus a
-`404.html`). The visual language — design tokens, the Inter + JetBrains Mono
-pairing, the warm-tan accent, the dark-default palette — is carried over from
-[jaimegago.dev](https://jaimegago.dev/) for consistency, but trimmed to only
-what this page renders. There is **no JavaScript**: the dark/light toggle is a
-focusable checkbox whose `:checked` state flips the design tokens through a CSS
-`:has()` selector, so the light-mode toggle ships at zero script cost. The one
-stylesheet (`assets/css/main.css`) is **inlined** into `<head>` at build time —
-small enough that inlining is cheaper than a second render-blocking request, and
-it keeps the whole page at ~16 KB excluding fonts (budget: 100 KB). Lighthouse
-scores 100 across performance, accessibility, best practices, and SEO.
+## Layout
 
-The fonts were **subset offline** so the largest font on the critical path is
-not the bottleneck for Largest Contentful Paint: `InterVariable.woff2` is cut
-from ~344 KB to ~43 KB by limiting the weight axis to the 400–500 range actually
-used, pinning the optical-size axis, and keeping only Latin glyphs; the two
-JetBrains Mono files are Latin-subset the same way. The subset `.woff2` files in
-`static/fonts/` are committed artifacts — there is no font build step. To
-regenerate them (e.g. after a font upgrade), use `fonttools`:
+- `content/_index.md` — the landing page (Hextra `hextra-home` layout). Authored here.
+- `content/safety.md` — the Safety deep-dive page. Authored here.
+- `content/docs/` — the documentation tree. **Generated, not committed** (see Docs sync).
+- `docs/public/` — the seeded docs source the sync reads today (a local stand-in for Joe's
+  `docs/public`; see Docs sync).
+- `layouts/_shortcodes/clip.html` — the demonstration-clip shortcode.
+- `layouts/_partials/custom/footer.html` — site-wide footer links (Hextra hook).
+- `scripts/sync-docs.sh` — the docs single-source sync step.
+- `static/media/` — feature-showcase media (see Media assets).
 
-```sh
-pip install fonttools brotli            # in a venv
-# limit axes on the variable font, then subset to Latin + woff2:
-fonttools varLib.instancer InterVariable.woff2 opsz=14 wght=400:500 -o tmp.ttf
-pyftsubset tmp.ttf --flavor=woff2 --layout-features='*' \
-  --unicodes="U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-2193,U+2212,U+2215,U+2026,U+FEFF,U+FFFD" \
-  --output-file=InterVariable.woff2
-```
+## Theme
+
+Hextra is installed as a **Hugo module** (`hugo.yaml` → `module.imports`), so a build needs **Go**
+available to fetch it. The Hugo version is pinned to **0.160.1 extended** (matching the sibling
+`jaimegago.dev` and `oasis-spec` sites). Search (FlexSearch) is on; dark mode is the default.
 
 ## Prerequisites
 
-- Hugo **extended** v0.128 or newer (`brew install hugo`)
+- Hugo **extended** ≥ 0.160.1 (`brew install hugo`)
+- Go ≥ 1.25 (to fetch the Hextra module)
 
-## Run locally
-
-```sh
-make dev
-```
-
-Then open <http://localhost:1313>. `make build` produces the minified output in
-`public/`.
-
-## Publish
-
-Push to `main`. GitHub Actions builds with `hugo --gc --minify` and deploys to
-GitHub Pages. One-time setup in the repo: **Settings → Pages → Build and
-deployment → Source: GitHub Actions**, and point the `joeagent.dev` DNS at
-GitHub Pages (an `ALIAS`/`ANAME` or four `A` records to the Pages IPs for the
-apex). The CNAME file is already committed, so HTTPS provisions automatically
-once DNS resolves.
-
-## Placeholders to fill in later
-
-Every fill-in point is driven by `[params]` in `hugo.toml` and marked in the
-templates with a `PLACEHOLDER` comment. To find them all:
+## Local development
 
 ```sh
-grep -rn PLACEHOLDER hugo.toml layouts/
+make dev      # syncs docs, then runs `hugo server`
 ```
 
-- **Install command** — `params.installCommand` in `hugo.toml`. Fill in once
-  Stream A.4 lands `install.sh`, then set `params.installPending = false` to
-  drop the "ships with the first public release" caption.
-- **GitHub repo URL** — `params.repoURL` / `params.repoLabel`. Known after the
-  public flip.
-- **OASIS evaluation results URL** — `params.oasisEvalURL`. The URL is stable
-  (`oasis-spec.dev/evaluations/joe/`); set `params.oasisEvalPending = false` to
-  drop the "republishing" tag once the page is back up.
+Open <http://localhost:1313>. `make build` produces the minified site in `public/`. `make sync`
+runs only the docs sync; `make clean` removes build output and the generated docs tree.
+
+## Docs sync (single-source)
+
+The documentation under `content/docs/` is **single-sourced and generated at build time** — it is
+never committed to this repo (it's in `.gitignore`). `scripts/sync-docs.sh` copies the
+documentation from a configurable source into `content/docs/` and adapts front matter so Hextra's
+sidebar auto-generates. The sync runs in **both** local development (`make dev`/`make build`) and
+the deploy workflow (before `hugo`).
+
+**The real source** is the **`docs/public`** tree inside Joe's own repository — a curated,
+reader-facing product-docs tree, deliberately *not* Joe's broader internal docs directory
+(decision records, investigations, prompts, design specs).
+
+**The one place to switch the source** is the `DOCS_SOURCE` variable at the top of
+[`scripts/sync-docs.sh`](scripts/sync-docs.sh) (overridable via the `DOCS_SOURCE` env var). Because
+Joe is not yet a public repository, CI cannot check it out, so `DOCS_SOURCE` defaults to a
+**locally-seeded copy** of `docs/public` committed in this repo at [`docs/public/`](docs/public)
+— labeled-placeholder stubs that keep the build green and render the sidebar today.
+
+> **The single flip step (when Joe is public):** point `DOCS_SOURCE` at a checkout of Joe's public
+> repository's `docs/public` — e.g. clone Joe in CI and set
+> `DOCS_SOURCE=<joe-checkout>/docs/public`. Nothing else changes, and the seeded `docs/public` copy
+> in this repo is then retired. No curation filter is needed in the sync script: curation lives
+> upstream in Joe's `docs/public` tree, so this site consumes an already-public-ready source.
+
+## Media assets
+
+Feature-showcase clips live in `static/media/` under a fixed naming convention; the `clip`
+shortcode embeds a muted, autoplay, looping clip with a poster and a graceful fallback. See
+[`static/media/README.md`](static/media/README.md). Media is optimized before being committed, and
+**Joe's own repository never stores these assets** — no real or heavy media is committed in this
+skeleton.
+
+## Deploy
+
+Push to `main`. GitHub Actions (`.github/workflows/hugo.yml`) sets up Go, installs pinned Hugo
+extended, fetches the Hextra module, **runs the docs sync**, builds with `hugo --gc --minify`, and
+deploys to GitHub Pages. One-time repo setup: **Settings → Pages → Source: GitHub Actions**, and
+point `joeagent.dev` DNS at GitHub Pages. The `static/CNAME` file is committed, so HTTPS provisions
+automatically once DNS resolves.
