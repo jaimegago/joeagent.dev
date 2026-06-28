@@ -1,25 +1,27 @@
 ---
 title: "Joe — self-hosted AI infrastructure copilot"
-description: "Joe is a self-hosted AI infrastructure copilot you run with your own LLM provider key. A single Go binary, governed by a layered safety architecture, Apache-2.0."
+description: "A self-hosted, open-source, governed AI agent for your infrastructure. One Go binary, your own model, Apache-2.0."
 layout: hextra-home
 ---
 
 {{< hextra/hero-badge >}}
   <div class="hx:w-2 hx:h-2 hx:rounded-full hx:bg-primary-400"></div>
-  <span>Open source · Apache-2.0 · [PLACEHOLDER status]</span>
+  <span>Open source · Apache-2.0 · ships in observe mode</span>
 {{< /hextra/hero-badge >}}
 
 <div class="hx:mt-6 hx:mb-6">
 {{< hextra/hero-headline >}}
-  The self-hosted AI copilot&nbsp;<br class="hx:sm:block hx:hidden" />for your infrastructure
+  The self-hosted, open-source AI agent&nbsp;<br class="hx:sm:block hx:hidden" />for your infrastructure
 {{< /hextra/hero-headline >}}
 </div>
 
 <div class="hx:mb-6">
 {{< hextra/hero-subtitle >}}
-  <strong>[PLACEHOLDER one-liner — rewrite at launch.]</strong> Joe is a self-hosted AI
-  infrastructure copilot you run with <em>your own</em> LLM provider key. It talks to your
-  provider directly. Your infrastructure, your model key, your control.
+  Run Joe as a single Go binary, pointed at <em>your own</em> model — Anthropic, Google,
+  or any OpenAI-compatible endpoint, including one you host yourself. It chats and reasons
+  over your infrastructure, and every request it makes passes through one governance seam.
+  Joe ships in <strong>observe mode</strong>: it reads and reasons while every change to
+  managed infrastructure is denied at a boot-sealed write floor.
 {{< /hextra/hero-subtitle >}}
 </div>
 
@@ -29,7 +31,7 @@ layout: hextra-home
 </div>
 
 <div class="hx:mb-12" style="font-size:0.95rem;opacity:0.7;">
-  A single Go binary · Apache-2.0 · bring your own LLM key
+  A single Go binary · Apache-2.0 · bring your own model
 </div>
 
 <!-- ===================================================================== -->
@@ -38,16 +40,23 @@ layout: hextra-home
 
 ## Governed by construction {#differentiator}
 
-> **[PLACEHOLDER section — rewrite at launch.]**
+Most copilots bolt safety on as an afterthought — a system prompt, a confirmation dialog,
+a hand-maintained list of "dangerous" commands. Joe's primary distinction is the opposite:
+**if Joe is running, Joe is governed.** Governance is not a mode you opt into; it is the
+seam every action passes through.
 
-Most copilots bolt safety on as an afterthought — a prompt, a confirmation dialog, a list of
-"dangerous" commands. Joe's primary distinction is the opposite: **if Joe is running, Joe is
-governed.** Governance is not a mode you opt into; it is the seam every action passes through.
+There is no execution path that skips the policy layer. A boot-resolved write floor, a
+binary read-versus-mutate classification, a deny-only incident gate, and an append-only
+audit trail sit *below* every front-end, so the same rules apply whether a request arrives
+over the Web UI, Slack, MCP, or the REST API — enforced before a tool ever dispatches, not
+by asking the model to behave.
 
-There is no execution path that skips the policy layer. A boot-resolved write floor, a binary
-read-versus-mutate classification, RBAC security zones, and an incident gate sit *below* every
-front-end, so the same rules apply whether a request arrives over the Web UI, Slack, MCP, or the
-REST API. [PLACEHOLDER — expand with the safety story at launch.]
+**Launch ships in observe mode.** The most conservative posture is the default, not an
+opt-in: Joe reads, reasons, maintains its own model of your systems, and tells you what it
+*would* do, while the write floor denies every managed-system mutation — below RBAC, where
+no policy or grant can override it. **Full-capabilities mode** (governed, deny-by-default
+mutation) and **zoned RBAC** (per-zone access grants and a zones admin surface) are the
+next milestones on the roadmap; the governance seam they pass through is already in place.
 
 <div class="hx:mt-4">
 {{< hextra/hero-button text="See the safety architecture →" link="safety" style="background:transparent;border:1px solid var(--primary-600);color:var(--primary-600);" >}}
@@ -59,28 +68,31 @@ REST API. [PLACEHOLDER — expand with the safety story at launch.]
 
 ## What Joe does {#features}
 
-> **[PLACEHOLDER showcase — copy and clips are placeholders. Each block reserves a media slot.]**
-
 ### Chat over the agentic loop
 
-[PLACEHOLDER blurb.] Ask Joe about your infrastructure in natural language. It runs an agentic
-loop, calls read and mutate tools through the guarded accessor, and streams its reasoning back.
+Ask Joe about your infrastructure in natural language. It runs an agentic loop, calls read
+tools through the guarded accessor, and streams its reasoning back as it goes.
 
-{{< clip src="feature-chat" caption="[PLACEHOLDER] Chat + streamed agentic loop." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-chat" caption="Chat + streamed agentic loop." alt="Demonstration clip coming soon." >}}
 
 ### Explore the infrastructure graph
 
-[PLACEHOLDER blurb.] Joe maintains its own model of your systems as a graph. Browse components,
-relationships, and observed state.
+Joe maintains its own model of your systems as a graph. Browse components, the
+relationships between them, and the state Joe has observed.
 
-{{< clip src="feature-graph" caption="[PLACEHOLDER] Graph explorer." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-graph" caption="Graph explorer." alt="Demonstration clip coming soon." >}}
 
-### Govern access and zones
+### Watch the write floor hold
 
-[PLACEHOLDER blurb.] Assign components to security zones, grant principals access, and review an
-append-only audit trail written at the enforcement point.
+In observe mode Joe will plan a change and then refuse to make it: every managed-system
+mutation is denied at the write floor, below RBAC, and the refusal is articulated rather
+than silent. The same floor backs panic and safe mode.
 
-{{< clip src="feature-rbac" caption="[PLACEHOLDER] RBAC + zones admin." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-observe" caption="Observe mode — a mutation denied at the floor." alt="Demonstration clip coming soon." >}}
+
+> **On the roadmap.** Full-capabilities mode and zoned RBAC add governed, deny-by-default
+> mutation and per-zone access grants. The governance seam is already in place — these add
+> what passes through it, not whether it is checked.
 
 <!-- ===================================================================== -->
 <!-- HOW IT WORKS -->
@@ -88,23 +100,21 @@ append-only audit trail written at the enforcement point.
 
 ## How it works {#how-it-works}
 
-> **[PLACEHOLDER section — rewrite at launch.]**
-
 {{< hextra/feature-grid >}}
   {{< hextra/feature-card
     title="One self-hosted binary"
     icon="server"
-    subtitle="[PLACEHOLDER] Joe is a single Go binary you run yourself. It holds the agentic loop, the LLM adapter (with your provider key), the infrastructure graph, the infra adapters, and the safety layer — all in one process."
+    subtitle="Joe is a single Go binary you run yourself. It holds the agentic loop, the LLM adapter (pointed at your model), the infrastructure graph, the infra adapters, and the safety layer — all in one process, executing server-side."
   >}}
   {{< hextra/feature-card
     title="The guarded accessor seam"
     icon="lock-closed"
-    subtitle="[PLACEHOLDER] Every tool executes server-side, in-process, through one guarded accessor. There is no local, REPL, or remote tool-execution path — the seam is where authorization and audit live."
+    subtitle="Every tool executes server-side, in-process, through one guarded accessor. There is no local, REPL, or remote tool-execution path — the seam is where authorization and audit live, identical across every front-end."
   >}}
   {{< hextra/feature-card
     title="A layered safety model"
     icon="shield-check"
-    subtitle="[PLACEHOLDER] A boot-resolved write floor, binary read/mutate classification with deny-by-default, RBAC zones, and a deny-only incident gate — checked before dispatch, identical across every front-end."
+    subtitle="A boot-resolved write floor, binary read/mutate classification with deny-by-default, an append-only audit log at the enforcement point, and a deny-only incident gate — checked before dispatch in a fixed precedence. Zoned RBAC adds per-zone access in full mode."
   >}}
 {{< /hextra/feature-grid >}}
 
@@ -114,11 +124,9 @@ append-only audit trail written at the enforcement point.
 
 ## Safety is the product {#safety}
 
-> **[PLACEHOLDER callout — rewrite at launch.]**
-
-Joe's safety architecture is documented in depth, not summarized in a tagline. Read how the write
-floor, classification, zones, credential promotion, incident gate, panic mode, and audit log fit
-together.
+Joe's safety architecture is documented in depth, not summarized in a tagline. Read how the
+write floor, read/mutate classification, credential promotion, the incident gate, panic
+mode, zoned RBAC, and the append-only audit log fit together.
 
 <div class="hx:mt-4">
 {{< hextra/hero-button text="Read the Safety deep-dive →" link="safety" >}}
@@ -130,18 +138,16 @@ together.
 
 ## Evaluated against OASIS {#oasis}
 
-> **[PLACEHOLDER band — no score is published. Do not add one here.]**
-
 Joe is evaluated by **OASIS**, an external safety-intelligence harness, against the
 [**Software Infrastructure Profile**](https://oasis-spec.dev/docs/v1.0/profiles/software-infrastructure/).
 
-The methodology treats **safety as a gate, not a score**: safety assertions are **binary, with no
-partial-credit tier** — one safety failure vetoes the evaluation. Verdicts come from
+The methodology treats **safety as a gate, not a score**: safety assertions are **binary,
+with no partial-credit tier** — one safety failure vetoes the evaluation. Verdicts come from
 **deterministic evaluators that verify real system state**, with **no language model in the
 verification loop**.
 
-**No score is published yet.** [PLACEHOLDER — results pending republication; see
-`oasisEvalPending` in `hugo.yaml`.]
+**No score is published yet.** Results are gated behind `oasisEvalPending` in `hugo.yaml`;
+the band flips to the published verdict once results are republished.
 
 <div class="hx:mt-4">
 {{< hextra/hero-button text="About OASIS →" link="https://oasis-spec.dev" style="background:transparent;border:1px solid var(--primary-600);color:var(--primary-600);" >}}
