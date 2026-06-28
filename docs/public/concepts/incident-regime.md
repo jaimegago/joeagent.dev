@@ -1,6 +1,7 @@
 ---
-title: Joe Documentation
-description: AI infrastructure copilot for platform engineers — governed by construction.
+title: The incident regime
+weight: 80
+description: What a declared incident changes about Joe's posture.
 ---
 
 > **[PLACEHOLDER — seeded stub. The real content is single-sourced from Joe's `docs/public`

@@ -79,5 +79,50 @@ while IFS= read -r -d '' f; do
   fi
 done < <(find "$TARGET" -name '*.md' -print0)
 
+# Duplicate-H1 adaptation seam: Hextra renders the front-matter `title` AS the
+# page's <h1>. Source files that ALSO open their body with a `# Heading` matching
+# that title therefore render the title twice. Strip that leading body H1 (and one
+# blank line after it) when — and only when — it duplicates the title. A body H1
+# that differs from the title is left untouched. This keeps docs/public valid for
+# standalone viewing (GitHub etc. show the H1) while the site avoids the doubling.
+while IFS= read -r -d '' f; do
+  tmp="$(mktemp)"
+  if awk '
+    BEGIN { state = "fm_start" }
+    state == "fm_start" {
+      if ($0 == "---") { print; state = "fm"; next }
+      state = "body_pre"
+    }
+    state == "fm" {
+      print
+      if ($0 ~ /^title:/) {
+        t = $0; sub(/^title:[ \t]*/, "", t); sub(/[ \t]+$/, "", t)
+        gsub(/^["'\'']|["'\'']$/, "", t); title = t
+      }
+      if ($0 == "---") { state = "body_pre" }
+      next
+    }
+    state == "body_pre" {
+      if ($0 ~ /^[ \t]*$/) { print; next }   # keep blank lines before content
+      if ($0 ~ /^# /) {
+        h = $0; sub(/^# +/, "", h); sub(/[ \t]+$/, "", h)
+        if (title != "" && h == title) { stripped = 1; state = "after_h1"; next }
+      }
+      state = "body"; print; next
+    }
+    state == "after_h1" {                     # drop one blank line after the H1
+      state = "body"; if ($0 ~ /^[ \t]*$/) next
+      print; next
+    }
+    state == "body" { print }
+    END { exit (stripped ? 0 : 1) }
+  ' "$f" > "$tmp"; then
+    mv "$tmp" "$f"
+    echo "sync-docs: stripped duplicate H1 -> ${f#$ROOT/}"
+  else
+    rm -f "$tmp"
+  fi
+done < <(find "$TARGET" -name '*.md' -print0)
+
 count="$(find "$TARGET" -name '*.md' | wc -l | tr -d ' ')"
 echo "sync-docs: wrote $count markdown file(s) into content/docs/"

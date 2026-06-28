@@ -1,6 +1,7 @@
 ---
-title: Joe Documentation
-description: AI infrastructure copilot for platform engineers — governed by construction.
+title: Principals and identity
+weight: 30
+description: How humans and machines are named and authenticated.
 ---
 
 > **[PLACEHOLDER — seeded stub. The real content is single-sourced from Joe's `docs/public`

@@ -1,6 +1,7 @@
 ---
-title: Joe Documentation
-description: AI infrastructure copilot for platform engineers — governed by construction.
+title: The agent loop and autonomy levels
+weight: 60
+description: The interactive and background loops, and how autonomous Joe really is today.
 ---
 
 > **[PLACEHOLDER — seeded stub. The real content is single-sourced from Joe's `docs/public`

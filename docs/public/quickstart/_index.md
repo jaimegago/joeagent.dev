@@ -1,6 +1,7 @@
 ---
-title: Joe Documentation
-description: AI infrastructure copilot for platform engineers — governed by construction.
+title: Quickstart
+weight: 20
+description: From nothing to a running Joe answering one question, in observation mode.
 ---
 
 > **[PLACEHOLDER — seeded stub. The real content is single-sourced from Joe's `docs/public`

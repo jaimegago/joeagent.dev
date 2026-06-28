@@ -1,6 +1,7 @@
 ---
-title: Joe Documentation
-description: AI infrastructure copilot for platform engineers — governed by construction.
+title: The Slack bot
+weight: 60
+description: Bring up joe slack as a Socket Mode daemon client.
 ---
 
 > **[PLACEHOLDER — seeded stub. The real content is single-sourced from Joe's `docs/public`

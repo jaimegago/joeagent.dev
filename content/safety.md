@@ -23,7 +23,7 @@ links to the reference documentation where the full mechanism will be described.
 > read-only — no endpoint, tool, or operator action short of a restart can lower it. When the
 > floor is up, **every mutate is denied for every principal**.
 
-[Reference → /docs/safety-model/write-floor]({{< relref "/docs/safety-model" >}})
+[Reference → Observation mode and the write floor]({{< relref "/docs/concepts/observation-mode-and-the-write-floor" >}})
 
 ## Binary read-vs-mutate classification, deny-by-default
 
@@ -32,7 +32,7 @@ links to the reference documentation where the full mechanism will be described.
 > *mutate* changes the managed system; reading state, updating Joe's own model, and notifying
 > humans are reads.
 
-[Reference → /docs/safety-model/classification]({{< relref "/docs/safety-model" >}})
+[Reference → Observation mode and the write floor]({{< relref "/docs/concepts/observation-mode-and-the-write-floor" >}})
 
 ## RBAC security zones
 
@@ -40,7 +40,7 @@ links to the reference documentation where the full mechanism will be described.
 > authenticate via OIDC; machines via service-account tokens. Authority is keyed on the
 > component and identical inside and outside an incident.
 
-[Reference → /docs/safety-model/rbac-zones]({{< relref "/docs/safety-model" >}})
+[Reference → RBAC, zones, and the read posture]({{< relref "/docs/concepts/rbac-zones-and-read-posture" >}})
 
 ## The credential promotion boundary
 
@@ -48,7 +48,7 @@ links to the reference documentation where the full mechanism will be described.
 > never accepts a secret. Credentials enter *only* at a separate, governed **promote-and-arm**
 > transition that writes a credential *reference*, never an inline secret.
 
-[Reference → /docs/safety-model/credential-promotion]({{< relref "/docs/safety-model" >}})
+[Reference → Components and promotion]({{< relref "/docs/concepts/components-and-promotion" >}})
 
 ## The deny-only incident and captain gate
 
@@ -56,7 +56,7 @@ links to the reference documentation where the full mechanism will be described.
 > mutations — it can **never elevate** authority. RBAC permissions are the same in and out of an
 > incident; the gate only ever subtracts.
 
-[Reference → /docs/safety-model/incident-gate]({{< relref "/docs/safety-model" >}})
+[Reference → The incident regime]({{< relref "/docs/concepts/incident-regime" >}})
 
 ## Panic mode
 
@@ -64,7 +64,7 @@ links to the reference documentation where the full mechanism will be described.
 > emergency reason. There is no live unlock: clearing panic is an acknowledge step that **requires
 > a restart** before writes resume.
 
-[Reference → /docs/safety-model/panic-mode]({{< relref "/docs/safety-model" >}})
+[Reference → Operations: recovering from safe mode]({{< relref "/docs/operations" >}})
 
 ## Append-only audit log
 
@@ -72,4 +72,4 @@ links to the reference documentation where the full mechanism will be described.
 > log — database triggers reject updates and deletes. Logins, admin mutations, and infra decisions
 > are all captured.
 
-[Reference → /docs/safety-model/audit-log]({{< relref "/docs/safety-model" >}})
+[Reference → The governed-safety invariant]({{< relref "/docs/concepts/governed-safety" >}})

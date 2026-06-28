@@ -1,11 +1,9 @@
 ---
-title: "Configuration"
-weight: 6
+title: Configuration
+weight: 50
+description: The YAML config and environment surface.
 ---
 
-# Configuration
-
-> **[PLACEHOLDER section.]**
-
-How to configure Joe — identity/OIDC, providers and keys, zones and policies. [PLACEHOLDER —
-details from Joe's real docs at sync time.]
+> **[PLACEHOLDER — seeded stub. The real content is single-sourced from Joe's `docs/public`
+> tree at build time (see the site README and `scripts/sync-docs.sh`). This stub mirrors
+> the real page's path and front matter so the sidebar and cross-links render today.]**
