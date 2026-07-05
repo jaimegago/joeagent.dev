@@ -48,7 +48,7 @@ links to the reference documentation where the full mechanism will be described.
 > never accepts a secret. Credentials enter *only* at a separate, governed **promote-and-arm**
 > transition that writes a credential *reference*, never an inline secret.
 
-[Reference → Components and promotion]({{< relref "/docs/concepts/components-and-promotion" >}})
+[Reference → The component lifecycle]({{< relref "/docs/concepts/component-lifecycle" >}})
 
 ## The deny-only incident and captain gate
 

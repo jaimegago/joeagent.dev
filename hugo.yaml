@@ -67,7 +67,7 @@ menu:
         type: search
 
 params:
-  description: "Joe is a self-hosted AI infrastructure copilot you run with your own LLM provider key. [PLACEHOLDER tagline — rewrite at launch.]"
+  description: "Joe is the self-hosted, open-source AI agent for your infrastructure — governed by construction. Bring your own LLM provider key."
 
   # Dark mode is the default per the design brief; toggle stays available.
   theme:

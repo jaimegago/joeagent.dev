@@ -1,7 +1,8 @@
 # joeagent.dev
 
 Source for [joeagent.dev](https://joeagent.dev/) — the landing-plus-documentation site for
-**Joe**, a self-hosted AI infrastructure copilot you run with your own LLM provider key. Built with
+**Joe**, the self-hosted, open-source AI agent for your infrastructure, run with your own LLM
+provider key. Built with
 [Hugo](https://gohugo.io/) and the [Hextra](https://github.com/imfing/hextra) theme, deployed to
 GitHub Pages from `main` by `.github/workflows/hugo.yml`. The custom domain is served from
 `static/CNAME`.

@@ -1,12 +1,12 @@
 ---
-title: "Joe — self-hosted AI infrastructure copilot"
+title: "Joe — the self-hosted, open-source AI agent for your infrastructure"
 description: "A self-hosted, open-source, governed AI agent for your infrastructure. One Go binary, your own model, Apache-2.0."
 layout: hextra-home
 ---
 
 {{< hextra/hero-badge >}}
   <div class="hx:w-2 hx:h-2 hx:rounded-full hx:bg-primary-400"></div>
-  <span>Open source · Apache-2.0 · ships in observe mode</span>
+  <span>Open source · Apache-2.0 · governed by construction</span>
 {{< /hextra/hero-badge >}}
 
 <div class="hx:mt-6 hx:mb-6">
@@ -20,7 +20,7 @@ layout: hextra-home
   Run Joe as a single Go binary, pointed at <em>your own</em> model — Anthropic, Google,
   or any OpenAI-compatible endpoint, including one you host yourself. It chats and reasons
   over your infrastructure, and every request it makes passes through one governance seam.
-  Joe ships in <strong>observe mode</strong>: it reads and reasons while every change to
+  Run Joe in <strong>observe mode</strong> and it reads and reasons while every change to
   managed infrastructure is denied at a boot-sealed write floor.
 {{< /hextra/hero-subtitle >}}
 </div>
@@ -51,10 +51,10 @@ audit trail sit *below* every front-end, so the same rules apply whether a reque
 over the Web UI, Slack, MCP, or the REST API — enforced before a tool ever dispatches, not
 by asking the model to behave.
 
-**Launch ships in observe mode.** The most conservative posture is the default, not an
-opt-in: Joe reads, reasons, maintains its own model of your systems, and tells you what it
-*would* do, while the write floor denies every managed-system mutation — below RBAC, where
-no policy or grant can override it. **Full-capabilities mode** (governed, deny-by-default
+**Observe mode is one switch away.** The most conservative posture is a single environment
+variable: start Joe in observation mode and the write floor is raised for the life of the
+process — no endpoint, tool, or operator action short of a restart can lower it.
+**Full-capabilities mode** (governed, deny-by-default
 mutation) and **zoned RBAC** (per-zone access grants and a zones admin surface) are the
 next milestones on the roadmap; the governance seam they pass through is already in place.
 
