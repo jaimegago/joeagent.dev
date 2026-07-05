@@ -150,12 +150,12 @@ admin API by an existing admin.
 
 ## Observation mode and the write floor
 
-A daemon started with `JOE_MODE=observation` boots with the **write floor up**: every
-attempt to mutate a managed system is denied before any other gate is consulted, and
-the floor is resolved once at boot and cannot be lowered while the process runs. This
-is the read-only posture to run while you are getting comfortable — Joe can read and
-reason about your infrastructure but cannot change it. Recovery to a writable posture
-is a deliberate restart with different boot inputs, never a live transition. See
+A daemon boots with the **write floor up** — observation mode is the default, and it is
+set explicitly with `JOE_MODE=observation`: every attempt to mutate a managed system is
+denied before any other gate is consulted, and the floor is resolved once at boot and
+cannot be lowered while the process runs. This is the read-only posture Joe ships in — Joe
+can read and reason about your infrastructure but cannot change it. Governed
+full-capabilities mode, which would boot with the floor down, is still forthcoming. See
 [observation mode and the write floor](../concepts/observation-mode-and-the-write-floor/)
 for the full model.
 

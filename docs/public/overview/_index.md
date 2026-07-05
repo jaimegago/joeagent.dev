@@ -32,20 +32,19 @@ correct. Three structural facts hold it up:
 - The decision to allow mutations is a **boot-time** decision that cannot be reversed
   while the process runs.
 
-## Joe can run read-only
+## Joe runs read-only
 
-Joe can be run in **observation mode** — started with `JOE_MODE=observation`, which
-raises the **write floor**. With the floor up, every attempt to mutate a managed system
-is denied *before any other gate* — before RBAC, before zones, before incident state —
-is even consulted. Joe can read your infrastructure and reason about it, but it cannot
-change it. This is a posture you choose, not the boot default: a normally started Joe
-comes up writable and lets governance decide each mutation.
+Joe runs in **observation mode** with the **write floor** up. With the floor up, every
+attempt to mutate a managed system is denied *before any other gate* — before RBAC, before
+zones, before incident state — is even consulted. Joe can read your infrastructure and
+reason about it, but it cannot change it. This is the posture Joe ships in today: a normally
+started daemon comes up read-only, and governed full-capabilities mode is still forthcoming.
 
 The write floor is resolved once, at boot, and is immutable for the life of the
-process. Nothing at runtime can lower it. Bringing it down is a deliberate act:
-change the boot inputs and restart. So moving Joe from "reads only" to "can act" is
-never accidental and never silent — it is an operator decision with a restart attached
-to it.
+process. Nothing at runtime can lower it. When governed full-capabilities mode lands,
+bringing the floor down will be a deliberate act — change the boot inputs and restart — so
+moving Joe from "reads only" to "can act" is never accidental and never silent, but an
+operator decision with a restart attached to it.
 
 ## Where to go next
 

@@ -61,11 +61,13 @@ two consequences you must plan for:
   [write floor](../concepts/observation-mode-and-the-write-floor/) is up — which it is in
   **observation mode** and in **safe mode** after a panic. An observation-mode install
   will *not* publish, no matter how the proposal was approved. Publication succeeds only
-  on a deployment whose write floor is down (full mode, panic state clear).
+  on a deployment whose write floor is down — governed full-capabilities mode (still
+  forthcoming), panic state clear.
 
 On a successful publish the proposal moves to **published**. If the write floor blocks it,
-the proposal stays **approved** and you will see the read-only denial; lower the floor (by
-running in full mode, or by clearing a panic and restarting — see
+the proposal stays **approved** and you will see the read-only denial; lowering the floor
+will require governed full-capabilities mode (still forthcoming), or clearing a panic and
+restarting — see
 [Operations](../operations/)) and ask Joe to publish again.
 
 ## The lifecycle at a glance
@@ -79,4 +81,4 @@ running in full mode, or by clearing a panic and restarting — see
 
 - Why a write is refused in observation or safe mode → [Observation mode and the write floor](../concepts/observation-mode-and-the-write-floor/)
 - Curated versus derived knowledge → [The knowledge graph](knowledge-graph/)
-- Running Joe in full mode so publication can succeed → [Operations](../operations/)
+- Governed full-capabilities mode (still forthcoming), under which publication can succeed → [Operations](../operations/)

@@ -36,11 +36,11 @@ mutation past a raised floor.
 The floor can be up for one of two distinct reasons, and Joe keeps them distinct so an
 operator can tell *why* writes are blocked:
 
-- **Observation mode** — an operator-chosen read-only posture. The floor is up because
-  the operator started Joe with `JOE_MODE=observation` at boot. It is not the boot
-  default — a normally started Joe comes up writable — but it is the posture to choose
-  when you want Joe to see and reason about your infrastructure without being able to
-  change it.
+- **Observation mode** — the read-only posture Joe ships in. The floor is up because the
+  daemon boots in observation mode by default (and explicitly with `JOE_MODE=observation`);
+  governed full-capabilities mode, which would boot with the floor down, is still
+  forthcoming. It is the posture in which Joe sees and reasons about your infrastructure
+  without being able to change it.
 - **Safe mode** — the floor is up because Joe was put into an emergency
   shutdown/panic state. This is a reaction to something going wrong, not a starting
   posture.

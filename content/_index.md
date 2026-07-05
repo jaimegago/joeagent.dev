@@ -20,7 +20,7 @@ layout: hextra-home
   Run Joe as a single Go binary, pointed at <em>your own</em> model — Anthropic, Google,
   or any OpenAI-compatible endpoint, including one you host yourself. It chats and reasons
   over your infrastructure, and every request it makes passes through one governance seam.
-  Run Joe in <strong>observe mode</strong> and it reads and reasons while every change to
+  Joe runs in <strong>observation mode</strong>: it reads and reasons while every change to
   managed infrastructure is denied at a boot-sealed write floor.
 {{< /hextra/hero-subtitle >}}
 </div>
@@ -51,9 +51,9 @@ audit trail sit *below* every front-end, so the same rules apply whether a reque
 over the Web UI, Slack, MCP, or the REST API — enforced before a tool ever dispatches, not
 by asking the model to behave.
 
-**Observe mode is one switch away.** The most conservative posture is a single environment
-variable: start Joe in observation mode and the write floor is raised for the life of the
-process — no endpoint, tool, or operator action short of a restart can lower it.
+**Joe ships in observation mode.** Today that is the posture it runs in: the write floor
+comes up read-only and stays raised for the life of the process — no endpoint, tool, or
+operator action short of a restart can lower it.
 **Full-capabilities mode** (governed, deny-by-default
 mutation) and **zoned RBAC** (per-zone access grants and a zones admin surface) are the
 next milestones on the roadmap; the governance seam they pass through is already in place.
@@ -84,9 +84,9 @@ relationships between them, and the state Joe has observed.
 
 ### Watch the write floor hold
 
-In observe mode Joe will plan a change and then refuse to make it: every managed-system
-mutation is denied at the write floor, below RBAC, and the refusal is articulated rather
-than silent. The same floor backs panic and safe mode.
+Joe will plan a change and then refuse to make it: every managed-system mutation is denied
+at the write floor, below RBAC, and the refusal is articulated rather than silent. The same
+floor backs panic and safe mode.
 
 {{< clip src="feature-observe" caption="Observe mode — a mutation denied at the floor." alt="Demonstration clip coming soon." >}}
 
@@ -114,7 +114,7 @@ than silent. The same floor backs panic and safe mode.
   {{< hextra/feature-card
     title="A layered safety model"
     icon="shield-check"
-    subtitle="A boot-resolved write floor, binary read/mutate classification with deny-by-default, an append-only audit log at the enforcement point, and a deny-only incident gate — checked before dispatch in a fixed precedence. Zoned RBAC adds per-zone access in full mode."
+    subtitle="A boot-resolved write floor, binary read/mutate classification with deny-by-default, an append-only audit log at the enforcement point, and a deny-only incident gate — checked before dispatch in a fixed precedence. Zoned RBAC will add per-zone access when full mode lands."
   >}}
 {{< /hextra/feature-grid >}}
 
