@@ -63,36 +63,72 @@ next milestones on the roadmap; the governance seam they pass through is already
 </div>
 
 <!-- ===================================================================== -->
-<!-- FEATURE SHOWCASE — repeatable blocks, each with a reserved media slot -->
+<!-- USE-CASE SPINE — the two things you do with Joe. Each block salvages a -->
+<!-- reserved clip slot where the visual fits (see static/media/README.md). -->
 <!-- ===================================================================== -->
 
 ## What Joe does {#features}
 
-### Chat over the agentic loop
+### Troubleshoot your live infrastructure
 
-Ask Joe about your infrastructure in natural language. It runs an agentic loop, calls read
-tools through the guarded accessor, and streams its reasoning back as it goes.
+Ask Joe about what is happening right now. It reads across your components under governance,
+correlates, and answers from the actual state of your systems — not generic runbooks.
+
+<div class="hx:mt-4 hx:mb-2 hx:flex hx:flex-col hx:gap-3">
+  <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
+    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>Users are reporting timeouts on checkout — help me find the cause.
+  </div>
+  <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
+    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>Why has p95 latency on the API crept up this week?
+  </div>
+</div>
 
 {{< clip src="feature-chat" caption="Chat + streamed agentic loop." alt="Demonstration clip coming soon." >}}
 
-### Explore the infrastructure graph
+### Make changes with full context
 
-Joe maintains its own model of your systems as a graph. Browse components, the
-relationships between them, and the state Joe has observed.
+<div class="hx:mt-4 hx:mb-4" style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:1rem 1.25rem;background:rgba(128,128,128,0.04);">
+  <div style="font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;opacity:0.7;margin-bottom:0.5rem;">Chat</div>
 
-{{< clip src="feature-graph" caption="Graph explorer." alt="Demonstration clip coming soon." >}}
+I was asked to increase the memory for application XYZ — how should I do that? Joe answers
+from live state — current limits, where it runs, what is adjacent — and proposes the change.
+Execution stays behind the write floor.
 
-### Watch the write floor hold
+{{< clip src="feature-graph" caption="Live infrastructure graph — the state Joe answers from." alt="Demonstration clip coming soon." >}}
 
-Joe will plan a change and then refuse to make it: every managed-system mutation is denied
-at the write floor, below RBAC, and the refusal is articulated rather than silent. The same
-floor backs panic and safe mode.
+</div>
 
-{{< clip src="feature-observe" caption="Observe mode — a mutation denied at the floor." alt="Demonstration clip coming soon." >}}
+<div class="hx:mt-4 hx:mb-4" style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:1rem 1.25rem;background:rgba(128,128,128,0.04);">
+  <div style="font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;opacity:0.7;margin-bottom:0.5rem;">Coding agent over MCP</div>
+
+Connect Claude Code or any MCP-capable agent to Joe's MCP server. While the agent writes the
+infra-as-code change, it reads Joe's live infrastructure graph and state as ground truth.
+
+</div>
 
 > **On the roadmap.** Full-capabilities mode and zoned RBAC add governed, deny-by-default
 > mutation and per-zone access grants. The governance seam is already in place — these add
 > what passes through it, not whether it is checked.
+
+<!-- ===================================================================== -->
+<!-- CAPABILITIES ROW — remaining highlights, as cards. Text-only: no        -->
+<!-- screenshot assets exist in the repo (see static/media/README.md).       -->
+<!-- ===================================================================== -->
+
+## Capabilities {#capabilities}
+
+{{< hextra/feature-grid >}}
+  {{< hextra/feature-card
+    title="Control your LLM spend"
+    icon="currency-dollar"
+    subtitle="Hard budgets, not dashboards after the fact. Set hourly, daily, and monthly spend limits — an over-budget call is refused before it reaches the provider, with an audit trail, not discovered on next month's invoice. A per-task runaway ceiling terminates a looping agent mid-flight. And context is managed deterministically under a single budget dial — no hidden summarization calls quietly burning tokens. Usage is visible per model, per principal, per session; every limit is adjustable at runtime. Or run a local model and spend nothing at all."
+  >}}
+  {{< hextra/feature-card
+    title="Agent skills"
+    icon="sparkles"
+    subtitle="Agent Skills are installable bundles of operational know-how that Joe loads from `~/.joe/skills/`, managed with the `joe skills` subcommand. New installs land quarantined until approved."
+  >}}
+{{< /hextra/feature-grid >}}
 
 <!-- ===================================================================== -->
 <!-- HOW IT WORKS -->
@@ -127,6 +163,10 @@ floor backs panic and safe mode.
 Joe's safety architecture is documented in depth, not summarized in a tagline. Read how the
 write floor, read/mutate classification, credential promotion, the incident gate, panic
 mode, zoned RBAC, and the append-only audit log fit together.
+
+Spend is governed like everything else. The same fail-closed philosophy that gates mutations
+gates your LLM budget: an over-limit call is refused before it leaves Joe, audited, and costs
+nothing. Governance in Joe is not a layer on top — it is the execution path.
 
 <div class="hx:mt-4">
 {{< hextra/hero-button text="Read the Safety deep-dive →" link="safety" >}}
