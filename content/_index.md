@@ -35,47 +35,81 @@ layout: hextra-home
 </div>
 
 <!-- ===================================================================== -->
-<!-- USE-CASE SPINE — the two things you do with Joe. Each block salvages a -->
-<!-- reserved clip slot where the visual fits (see static/media/README.md). -->
+<!-- USE-CASE SPINE — three alternating text/clip rows (.joe-feature-row,   -->
+<!-- assets/css/custom.css). Each row reserves a clip slot where the visual -->
+<!-- fits (see static/media/README.md).                                     -->
 <!-- ===================================================================== -->
 
 ## What Joe does {#features .joe-section-heading}
+
+<div class="joe-feature-row">
+  <div class="joe-feature-row__text">
 
 ### Understand your live infrastructure
 
 Ask Joe what's happening right now. It reads across your components, correlates, and answers
 from the live state of your systems.
 
-<div class="hx:mt-4 hx:mb-2 hx:flex hx:flex-col hx:gap-3">
+<div class="hx:mt-4 hx:flex hx:flex-col hx:gap-3">
   <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
     <span style="opacity:0.5;">&rsaquo;&nbsp;</span>Users are reporting timeouts on checkout — help me find the cause.
   </div>
   <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
-    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>Why has p95 latency on the API crept up this week?
+    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>Why has p95 latency on the payments API crept up this week?
   </div>
 </div>
+
+  </div>
+  <div class="joe-feature-row__media">
 
 {{< clip src="feature-chat" caption="Chat + streamed agentic loop." alt="Demonstration clip coming soon." >}}
 
+  </div>
+</div>
+
+<div class="joe-feature-row joe-feature-row--flip">
+  <div class="joe-feature-row__text">
+
 ### Make changes with full context
 
-<div class="hx:mt-4 hx:mb-4" style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:1rem 1.25rem;background:rgba(128,128,128,0.04);">
-  <div style="font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;opacity:0.7;margin-bottom:0.75rem;">Chat</div>
+Joe answers from live state — current limits, where it runs, what sits adjacent — and
+proposes the exact change. Execution stays behind the write floor.
+
+<div class="hx:mt-4 hx:flex hx:flex-col hx:gap-3">
   <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
-    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>I was asked to increase the memory for application XYZ — how should I do that?
+    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>I was asked to increase the memory for the orders service — how should I do that?
   </div>
-  <p style="margin-top:0.75rem;">Joe answers from live state — current limits, where it runs, what sits adjacent — and proposes the exact change. Execution stays behind the write floor.</p>
+</div>
+
+  </div>
+  <div class="joe-feature-row__media">
 
 {{< clip src="feature-graph" caption="Live infrastructure graph — the state Joe answers from." alt="Demonstration clip coming soon." >}}
 
+  </div>
 </div>
 
-<div class="hx:mt-4 hx:mb-4" style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:1rem 1.25rem;background:rgba(128,128,128,0.04);">
-  <div style="font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;opacity:0.7;margin-bottom:0.5rem;">Coding agent over MCP</div>
+<div class="joe-feature-row">
+  <div class="joe-feature-row__text">
 
-Connect Claude Code or any MCP-capable agent to Joe's MCP server. While the agent writes the
-infra-as-code change, it reads Joe's live infrastructure graph as ground truth.
+### Ground your coding agent
 
+Connect Claude Code or any MCP-capable agent to Joe's MCP server. Edit your infra-as-code as
+usual, and let the agent check the change against Joe's live infrastructure graph before it
+ships.
+
+<div class="hx:mt-4 hx:flex hx:flex-col hx:gap-3">
+  <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
+    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>Is this change I'm about to commit safe for prod? Ask Joe.
+  </div>
+</div>
+
+  </div>
+  <div class="joe-feature-row__media">
+
+{{< clip src="feature-mcp" caption="Claude Code reads the diff, queries Joe's live graph over MCP, and answers from prod state." alt="Demonstration clip coming soon." >}}
+
+  </div>
 </div>
 
 <!-- ===================================================================== -->

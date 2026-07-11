@@ -89,6 +89,29 @@ h1, h2, h3, h4, h5, h6,
   color: #f1f5f9;
 }
 
+/* --- Front-page feature rows ------------------------------------------------ */
+/* "What Joe does" alternating text/clip rows. The text column comes first in
+   the DOM, so narrow viewports stack text above the clip; --flip swaps the
+   sides on wide viewports only. */
+.joe-feature-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 2.5rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+.joe-feature-row > * {
+  min-width: 0;
+}
+@media (min-width: 768px) {
+  .joe-feature-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .joe-feature-row--flip .joe-feature-row__text {
+    order: 2;
+  }
+}
+
 /* --- Brand palette --------------------------------------------------------- */
 :root {
   --joe-ink: #211D19;

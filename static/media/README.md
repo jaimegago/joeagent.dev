@@ -15,7 +15,7 @@ static/media/<slug>.poster.webp   # optional poster; else placeholder-poster.svg
 
 The shortcode embeds a **muted, autoplay, looping, inline** `<video>` with a poster and a
 graceful `<img>` fallback when the clip can't load. Current feature slugs (placeholders):
-`feature-chat`, `feature-graph`, `feature-observe`.
+`feature-chat`, `feature-graph`, `feature-mcp`.
 
 ## Conventions
 
