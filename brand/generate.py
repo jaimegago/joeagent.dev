@@ -120,13 +120,16 @@ def raster(name, width, bg=None):
 def make_marks():
     write_svg(mark_body(INK, RUST), "0 0 140 140", "joe-mark")
     write_svg(mark_body(CREAM, RUST), "0 0 140 140", "joe-mark-dark")
-    write_svg(mark_body(INK, RUST, sw=14, pr=14, br=20, spw=16, bh=16),
+    # Favicon is backed with a cream tile so it stays legible on dark
+    # browser tabs and iOS (which composites transparency onto black).
+    tile = f'<rect x="-8" y="-12" width="156" height="156" rx="34" fill="{CREAM}"/>'
+    write_svg(tile + mark_body(INK, RUST, sw=14, pr=14, br=20, spw=16, bh=16),
               "-8 -12 156 156", "joe-favicon")
     lockup(INK, RUST, "joe-lockup")
     lockup(CREAM, RUST, "joe-lockup-dark")
     render_png("joe-mark", 280, CREAM)
     render_png("joe-mark-dark", 280, INK)
-    render_png("joe-favicon", 32, CREAM)
+    render_png("joe-favicon", 32)
     render_png("joe-lockup", 640, CREAM)
     render_png("joe-lockup-dark", 640, INK)
 
