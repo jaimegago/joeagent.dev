@@ -18,9 +18,10 @@ layout: hextra-home
 <div class="hx:mb-6">
 {{< hextra/hero-subtitle >}}
   Joe is built to operate your infrastructure under governance you control. It connects to
-  your systems and investigates through governed tools, using a model you choose — Anthropic,
-  Google, or any OpenAI-compatible endpoint, including one you host yourself. One binary,
-  nothing else to install. Read-only by default; governed change is the design.
+  your systems under its own identity — scoped, per-component credentials — and acts on them
+  through tools typed read or mutate at boot. Bring your own model: Anthropic, Google, or any
+  OpenAI-compatible endpoint, including one you host yourself. One binary, nothing else to
+  install. Read-only by default; built for governed change.
 {{< /hextra/hero-subtitle >}}
 </div>
 
