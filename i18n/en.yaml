@@ -3,6 +3,6 @@
 # through to the theme defaults.
 
 # Footer attribution. The theme default is "© 2026 Hextra Project."; this is
-# Joe's own line, rendered by Hextra's footer when params.footer.displayCopyright
-# is true.
-copyright: "© 2026 Joe."
+# Joe's own line, rendered by the custom footer partial
+# (layouts/_partials/custom/footer.html).
+copyright: "© 2026 Joe — Joe Operates Everything."

@@ -106,7 +106,9 @@ params:
 
   footer:
     enable: true
-    displayCopyright: true
+    # The theme's copyright section is a tall fixed-padding block; the custom
+    # footer partial renders the copyright inline with the links row instead.
+    displayCopyright: false
     displayPoweredBy: false
     width: normal
 
