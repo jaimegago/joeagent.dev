@@ -77,7 +77,7 @@ proposes the exact change. Execution stays behind the write floor.
 
 <div class="hx:mt-4 hx:flex hx:flex-col hx:gap-3">
   <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
-    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>I was asked to increase the memory for the orders service — how should I do that?
+    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>The orders service keeps hitting its memory limit — should we increase it, and if so, how?
   </div>
 </div>
 
