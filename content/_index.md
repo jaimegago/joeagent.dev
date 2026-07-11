@@ -95,22 +95,7 @@ restart can lower it — but the seam is built for what comes next. Full-capabil
 deny-by-default mutation and zoned RBAC add what passes through the seam, not whether it is
 checked.
 
-<div class="hx:mt-4">
-{{< hextra/hero-button text="Read the Safety deep-dive →" link="safety" >}}
-</div>
-
-<!-- ===================================================================== -->
-<!-- HOW IT WORKS -->
-<!-- ===================================================================== -->
-
-## How it works {#how-it-works .joe-section-heading}
-
-{{< hextra/feature-grid >}}
-  {{< hextra/feature-card
-    title="One self-hosted binary"
-    icon="server"
-    subtitle="Joe is a single Go binary you run yourself. The agentic loop, the LLM adapter, the infrastructure graph, and the safety layer live in one process, executing server-side."
-  >}}
+{{< hextra/feature-grid cols="2" >}}
   {{< hextra/feature-card
     title="The guarded accessor seam"
     icon="lock-closed"
@@ -123,18 +108,37 @@ checked.
   >}}
 {{< /hextra/feature-grid >}}
 
+<div class="hx:mt-4">
+{{< hextra/hero-button text="Read the Safety deep-dive →" link="safety" >}}
+</div>
+
 <!-- ===================================================================== -->
-<!-- CAPABILITIES ROW — remaining highlights, as cards. Text-only: no        -->
+<!-- WHAT'S IN THE BOX — remaining highlights, as cards. Text-only: no       -->
 <!-- screenshot assets exist in the repo (see static/media/README.md).       -->
 <!-- ===================================================================== -->
 
-## Capabilities {#capabilities .joe-section-heading}
+## What's in the box {#whats-in-the-box .joe-section-heading}
 
 {{< hextra/feature-grid >}}
+  {{< hextra/feature-card
+    title="One self-hosted binary"
+    icon="server"
+    subtitle="Joe is a single Go binary you run yourself. The agentic loop, the LLM adapter, the infrastructure graph, and the safety layer live in one process, executing server-side."
+  >}}
   {{< hextra/feature-card
     title="A live infrastructure graph"
     icon="share"
     subtitle="Joe maintains a live graph of your infrastructure — components, relationships, state — refreshed on a continuous background loop and persisted across restarts. Questions that span systems — what feeds this service's metrics, where it stores its data, what manages its deploys — are single graph queries, not answers stitched from one-off calls."
+  >}}
+  {{< hextra/feature-card
+    title="Native tools"
+    icon="code"
+    subtitle="Joe's tools are typed, in-process API clients — Kubernetes through client-go, observability backends and datastores through their native APIs. No adapter or tool shells out to kubectl or subprocess CLIs, so there is no ambient kubeconfig to inherit and no command string to inject into."
+  >}}
+  {{< hextra/feature-card
+    title="Multi-user, SSO ready"
+    icon="users"
+    subtitle="Joe is built for teams: sign-in plugs into your identity provider over OIDC, every request runs as an authenticated principal, and sessions are shared team-wide like pull requests — anyone can read, only the owner edits."
   >}}
   {{< hextra/feature-card
     title="Control your LLM spend"
