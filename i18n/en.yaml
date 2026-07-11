@@ -1,0 +1,8 @@
+# Project i18n overrides (highest priority; layered over the Hextra theme's
+# i18n/en.yaml). Only keys defined here are overridden — everything else falls
+# through to the theme defaults.
+
+# Footer attribution. The theme default is "© 2026 Hextra Project."; this is
+# Joe's own line, rendered by Hextra's footer when params.footer.displayCopyright
+# is true.
+copyright: "© 2026 Joe."
