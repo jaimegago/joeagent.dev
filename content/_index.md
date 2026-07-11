@@ -130,7 +130,12 @@ checked.
 
 ## Capabilities {#capabilities .joe-section-heading}
 
-{{< hextra/feature-grid cols="2" >}}
+{{< hextra/feature-grid >}}
+  {{< hextra/feature-card
+    title="A live infrastructure graph"
+    icon="share"
+    subtitle="Joe maintains a live graph of your infrastructure — components, relationships, state — refreshed on a continuous background loop and persisted across restarts. Questions that span systems — what feeds this service's metrics, where it stores its data, what manages its deploys — are single graph queries, not answers stitched from one-off calls."
+  >}}
   {{< hextra/feature-card
     title="Control your LLM spend"
     icon="currency-dollar"
