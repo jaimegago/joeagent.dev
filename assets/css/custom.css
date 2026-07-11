@@ -133,6 +133,36 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+/* --- Docs sidebar active item ------------------------------------------------ */
+/* Hextra hardcodes the sidebar active state to its primary ramp in the sidebar
+   partial (hx:bg-primary-100 fill, hx:text-primary-800 text), and this site
+   remaps the primary ramp to brand rust — so the active item rendered as a
+   coral/danger fill. The ramp itself stays (links, buttons, hero depend on
+   it); only the active item is rescoped here: neutral fill (the theme's
+   gray-100 hover tone), near-black medium-weight text, and a 3px rust bar on
+   the left edge — the brand hue appears only in the bar. Left padding drops by
+   the bar width so the label stays aligned with inactive items. */
+.hextra-sidebar-container a.hextra-sidebar-active-item {
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 500;
+  border-left: 3px solid var(--joe-rust);
+  border-radius: 0 0.25rem 0.25rem 0;
+  padding-left: calc(0.5rem - 3px);
+}
+.dark .hextra-sidebar-container a.hextra-sidebar-active-item {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f9fafb;
+  border-left-color: var(--joe-rust-on-dark);
+}
+/* The section-collapse chevron inherits the same primary-ramp active color. */
+.hextra-sidebar-container .hextra-sidebar-item[data-active="true"] .hextra-sidebar-collapsible-button {
+  color: #111827;
+}
+.dark .hextra-sidebar-container .hextra-sidebar-item[data-active="true"] .hextra-sidebar-collapsible-button {
+  color: #f9fafb;
+}
+
 /* --- Brand palette --------------------------------------------------------- */
 :root {
   --joe-ink: #211D19;
