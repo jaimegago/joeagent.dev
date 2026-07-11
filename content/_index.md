@@ -41,10 +41,10 @@ layout: hextra-home
 
 ## What Joe does {#features .joe-section-heading}
 
-### Troubleshoot your live infrastructure
+### Understand your live infrastructure
 
 Ask Joe what's happening right now. It reads across your components, correlates, and answers
-from the actual state of your systems — not from generic runbooks.
+from the live state of your systems.
 
 <div class="hx:mt-4 hx:mb-2 hx:flex hx:flex-col hx:gap-3">
   <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
