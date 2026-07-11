@@ -83,17 +83,16 @@ infra-as-code change, it reads Joe's live infrastructure graph as ground truth.
 
 ## Governed by construction {#differentiator .joe-section-heading}
 
-Most infrastructure copilots bolt safety on as an afterthought — a system prompt, a
-confirmation dialog, a hand-maintained list of dangerous commands. Joe inverts that: if Joe
-is running, Joe is governed. Every tool call passes through one seam — write floor, incident
-state, RBAC — enforced in code before a tool ever dispatches, not by asking the model to
-behave. The same rules apply whether a request arrives over the web UI, MCP, or the REST API.
+Joe's safety model is not a system prompt, a confirmation dialog, or a hand-maintained list
+of dangerous commands. If Joe is running, Joe is governed: every tool call passes through one
+seam — write floor, incident state, RBAC — enforced in code before a tool ever dispatches,
+not by asking the model to behave. The same rules apply whether a request arrives over the
+web UI, MCP, or the REST API.
 
-This is also why Joe is not another investigation agent that can only talk about your
-infrastructure. Joe ships in observation mode today — the write floor boots read-only and
-nothing short of a restart can lower it — but the seam is built for what comes next.
-Full-capabilities mode with deny-by-default mutation and zoned RBAC add what passes through
-the seam, not whether it is checked.
+Joe ships in observation mode today — the write floor boots read-only and nothing short of a
+restart can lower it — but the seam is built for what comes next. Full-capabilities mode with
+deny-by-default mutation and zoned RBAC add what passes through the seam, not whether it is
+checked.
 
 <div class="hx:mt-4">
 {{< hextra/hero-button text="Read the Safety deep-dive →" link="safety" >}}
