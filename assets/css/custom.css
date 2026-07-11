@@ -73,13 +73,15 @@ h1, h2, h3, h4, h5, h6,
    its `##` section labels inherit body type and read as bold body copy. This
    reapplies the theme's own h2 treatment (text-3xl, semibold, bottom rule) to
    the front-page section headings, which carry the .joe-section-heading class
-   via a Markdown heading attribute. No new visual design — theme values only. */
+   via a Markdown heading attribute. No new visual design — theme values only,
+   except margin-top, widened to 4rem (Tailwind mt-16) so top-level landing
+   sections separate clearly. */
 .joe-section-heading {
   font-size: 1.875rem;
   line-height: 2.25rem;
   font-weight: 600;
   letter-spacing: -0.025em;
-  margin-top: 2.5rem;
+  margin-top: 4rem;
   padding-bottom: 0.25rem;
   border-bottom: 1px solid rgba(229, 229, 229, 0.7);
   color: #0f172a;
@@ -87,6 +89,25 @@ h1, h2, h3, h4, h5, h6,
 .dark .joe-section-heading {
   border-bottom-color: rgba(219, 234, 254, 0.1);
   color: #f1f5f9;
+}
+
+/* --- Front-page prose rhythm ------------------------------------------------ */
+/* The hextra-home layout also loses the theme's block rhythm: outside .content,
+   Tailwind's preflight zeroes paragraph margins, so section prose and card
+   grids render flush. Reapply the theme's paragraph beat (typography.css gives
+   prose paragraphs mt-6 / leading-7) to top-level landing-page blocks — the
+   selectors key off .joe-section-heading so nothing leaks into docs pages. */
+.joe-section-heading ~ p {
+  margin-top: 1.5rem;
+  line-height: 1.75rem;
+}
+.joe-section-heading ~ .hextra-feature-grid {
+  margin-top: 1.5rem;
+}
+/* Pitch paragraph inside a feature row: match the 1rem beat of the prompt
+   chips block (hx:mt-4) that follows it. */
+.joe-feature-row__text > p {
+  margin-top: 1rem;
 }
 
 /* --- Front-page feature rows ------------------------------------------------ */

@@ -142,7 +142,7 @@ checked.
   >}}
 {{< /hextra/feature-grid >}}
 
-<div class="hx:mt-4">
+<div class="hx:mt-6">
 {{< hextra/hero-button text="Read the Safety deep-dive →" link="safety" >}}
 </div>
 
@@ -200,6 +200,6 @@ evaluators that verify real system state — no language model in the verificati
 score is published yet; this section flips to the published verdict once results are
 republished.
 
-<div class="hx:mt-4">
+<div class="hx:mt-6">
 {{< hextra/hero-button text="About OASIS →" link="https://oasis-spec.dev" style="background:transparent;border:1px solid var(--primary-600);color:var(--primary-600);" >}}
 </div>
