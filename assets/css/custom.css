@@ -1,0 +1,95 @@
+/* ---------------------------------------------------------------------------
+   Joe brand wiring — fonts, palette, accent.
+   Loaded by Hextra via head.html (resources.Get "css/custom.css"). Scope is
+   deliberately narrow: self-hosted fonts, the brand palette as custom
+   properties, and the accent/link color. No component restyling.
+   Assets: fonts in static/fonts, logos in static/images (see hugo.yaml navbar).
+   --------------------------------------------------------------------------- */
+
+/* --- Self-hosted brand fonts (full woff2, converted from brand/fonts) ------ */
+
+/* Zilla Slab — headings. Bold + SemiBold static weights. */
+@font-face {
+  font-family: "Zilla Slab";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/ZillaSlab-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Zilla Slab";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/ZillaSlab-Bold.woff2") format("woff2");
+}
+
+/* Source Sans 3 — body. Variable weight axis 200–900. */
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/fonts/SourceSans3.woff2") format("woff2");
+}
+
+/* IBM Plex Mono — code. Regular + Medium. */
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/IBMPlexMono-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/IBMPlexMono-Medium.woff2") format("woff2");
+}
+
+/* --- Font application ------------------------------------------------------ */
+/* Hextra resolves body/mono type through these Tailwind v4 variables
+   (assets/css/styles.css :root). Redefining them retargets the whole site
+   without fighting per-element specificity. */
+:root {
+  --hx-font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --hx-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Headings have no separate font variable in Hextra (they inherit sans), so
+   Zilla Slab is applied by selector. Covers content headings and the hero. */
+h1, h2, h3, h4, h5, h6,
+.hextra-hero h1,
+.hx\:font-extrabold {
+  font-family: "Zilla Slab", var(--hx-font-sans);
+}
+
+/* --- Brand palette --------------------------------------------------------- */
+:root {
+  --joe-ink: #211D19;
+  --joe-rust: #C05F2E;
+  --joe-rust-on-dark: #D97B4A;
+  --joe-brass: #D9A441;
+  --joe-cream: #F5F0E4;
+  --joe-slate: #4A6670;
+}
+
+/* --- Accent / links -------------------------------------------------------- */
+/* Hextra derives its primary-* color ramp from these three HSL parts
+   (assets/css/styles.css). Remapping them points links and primary accents at
+   brand rust — and, because the hero buttons reference var(--primary-600),
+   updates those for free. rust on light, rust-on-dark on dark backgrounds. */
+:root {
+  --primary-hue: 20deg;
+  --primary-saturation: 61%;
+  --primary-lightness: 47%;
+}
+.dark {
+  --primary-hue: 21deg;
+  --primary-saturation: 65%;
+  --primary-lightness: 57%;
+}

@@ -76,8 +76,17 @@ params:
     displayToggle: true
 
   navbar:
-    displayTitle: true
-    displayLogo: false
+    # The lockup SVG already contains the "joe" wordmark, so the text title is
+    # off to avoid doubling it. Light/dark variants swap with the theme
+    # (Hextra navbar-title.html supports navbar.logo.dark).
+    displayTitle: false
+    displayLogo: true
+    logo:
+      path: images/joe-lockup.svg
+      dark: images/joe-lockup-dark.svg
+      # Lockup is ~404x156; height 28 keeps it within the 4rem navbar.
+      width: 72
+      height: 28
     width: wide
 
   # Full-text client-side search (no external service).

@@ -1,7 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="joe">
-  <rect width="32" height="32" rx="7" fill="#0b0b0d"/>
-  <g fill="none" stroke="#d4a574" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="9,11 15,16 9,21"/>
-    <line x1="17" y1="21.7" x2="23" y2="21.7"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -12 156 156">
+  <circle cx="70" cy="12" r="14" fill="#211D19"/>
+  <line x1="70" y1="16" x2="22" y2="70" stroke="#211D19" stroke-width="14" stroke-linecap="round"/>
+  <line x1="70" y1="16" x2="118" y2="70" stroke="#211D19" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="22" cy="79" r="20" fill="#C05F2E"/>
+  <circle cx="118" cy="79" r="20" fill="#C05F2E"/>
+  <rect x="62.0" y="16" width="16" height="98" rx="4" fill="#211D19"/>
+  <rect x="28" y="108" width="84" height="16" rx="4" fill="#211D19"/>
 </svg>
