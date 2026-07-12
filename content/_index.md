@@ -30,10 +30,6 @@ layout: hextra-home
 {{< hextra/hero-button text="Get Started →" link="docs" style="background:transparent;border:1px solid var(--primary-600);color:var(--primary-600);" >}}
 </div>
 
-<div class="hx:mb-12" style="font-size:0.95rem;opacity:0.7;">
-  A single Go binary · Apache-2.0 · bring your own model
-</div>
-
 <!-- ===================================================================== -->
 <!-- USE-CASE SPINE — three alternating text/clip rows (.joe-feature-row,   -->
 <!-- assets/css/custom.css). Each row reserves a clip slot where the visual -->
