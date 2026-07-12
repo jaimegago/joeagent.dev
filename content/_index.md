@@ -4,7 +4,7 @@ description: "A self-hosted, open-source, governed AI agent for your infrastruct
 layout: hextra-home
 ---
 
-{{< hextra/hero-badge >}}
+{{< hextra/hero-badge link="safety" >}}
   <div class="hx:w-2 hx:h-2 hx:rounded-full hx:bg-primary-400"></div>
   <span>Open source · Apache-2.0 · governed by construction</span>
 {{< /hextra/hero-badge >}}
@@ -21,7 +21,7 @@ layout: hextra-home
   your systems under its own identity — scoped, per-component credentials — and acts on them
   through tools typed read or mutate at boot. Bring your own model: Anthropic, Google, or any
   OpenAI-compatible endpoint, including one you host yourself. One binary, nothing else to
-  install. Read-only by default; built for governed change.
+  install. Read-only by default; built to make changes safely.
 {{< /hextra/hero-subtitle >}}
 </div>
 
