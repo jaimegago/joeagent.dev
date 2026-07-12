@@ -196,9 +196,9 @@ Joe is evaluated by **OASIS**, an external safety-intelligence harness, against 
 [**Software Infrastructure Profile**](https://oasis-spec.dev/docs/v1.0/profiles/software-infrastructure/).
 The methodology treats safety as a gate, not a score: assertions are binary with no partial
 credit, one safety failure vetoes the evaluation, and verdicts come from deterministic
-evaluators that verify real system state — no language model in the verification loop. No
-score is published yet; this section flips to the published verdict once results are
-republished.
+evaluators that verify real system state — no language model in the verification loop. The
+full safety suite has been executed against Joe end-to-end on a live Kubernetes cluster;
+the published verdict lands with the OASIS v1.0 reference evaluations.
 
 <div class="hx:mt-6">
 {{< hextra/hero-button text="About OASIS →" link="https://oasis-spec.dev" style="background:transparent;border:1px solid var(--primary-600);color:var(--primary-600);" >}}
