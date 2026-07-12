@@ -1,13 +1,15 @@
 ---
 title: "Safety"
 description: "How Joe's governed safety architecture works, mechanism by mechanism: the gate pipeline, the boot-resolved write floor, read/mutate classification, blast-radius bounds, the audit log, the incident gate, panic and recovery, Joe's own identity, and evaluation by OASIS."
-# Landing-adjacent deep-dive page — NOT a node in the docs tree. The `wide`
-# layout renders standalone (no docs sidebar, breadcrumbs, or TOC), consistent
-# with the landing, and renders the front-matter title as the page H1. Onward
-# links into /docs use {{< relref >}} so they stay root-relative under the
-# GitHub-Pages base URL. Target of the landing's "Read the Safety deep-dive"
-# button (content/_index.md, link="safety").
-layout: wide
+# Landing-adjacent deep-dive page — NOT a node in the docs tree. The `single`
+# layout renders standalone: no docs sidebar tree (the theme's single.html
+# disables it, leaving only an empty spacer), but it DOES render the right-hand
+# "On this page" TOC (sticky, xl+, with scroll-spy) and the front-matter title
+# as the centered page H1 — the same reading column and TOC the /docs pages use,
+# without joining the docs tree. Onward links into /docs use {{< relref >}} so
+# they stay root-relative under the GitHub-Pages base URL. Target of the
+# landing's "Read the Safety deep-dive" button (content/_index.md, link="safety").
+layout: single
 ---
 
 ## If Joe is running, Joe is governed.
