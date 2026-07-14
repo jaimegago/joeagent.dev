@@ -3,8 +3,9 @@
 
   Inline clips (layouts/_shortcodes/clip.html) autoplay once, muted, without
   controls, and rest on their final frame. Activating one opens the same sources
-  here at up to their native 1280px width, from time zero, with browser controls
-  so the clip can be scrubbed and read at the viewer's pace.
+  here at up to their native 1280px width and replays them from time zero — big
+  enough to actually read. The overlay carries no controls either: it plays once
+  and stops on its final frame, same as the inline clip.
 
   Loaded only on pages that use the clip shortcode — see custom/head-end.html.
   One overlay is built lazily and reused by every clip on the page. No focus-trap
@@ -31,11 +32,13 @@
 
     overlayVideo = document.createElement("video");
     overlayVideo.className = "joe-clip-overlay__video";
-    overlayVideo.controls = true;
+    // No controls: the native control bar greys out the bottom of the frame,
+    // which is exactly where these clips put their critical content — and its
+    // download / playback-rate / picture-in-picture / volume affordances are all
+    // irrelevant here. The overlay just plays the clip once, larger, and stops.
+    overlayVideo.controls = false;
     overlayVideo.playsInline = true;
-    // Muted so the autoplay-on-open is never blocked; the controls let the
-    // viewer unmute if a clip ever carries an audio track.
-    overlayVideo.muted = true;
+    overlayVideo.muted = true; // so the autoplay-on-open is never blocked
     overlayVideo.preload = "auto";
 
     var close = document.createElement("button");
