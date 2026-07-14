@@ -1,6 +1,14 @@
 {{- /*
-  clip — embed a muted, autoplaying, looping demonstration clip with a poster
-  image and a graceful fallback. Used by the landing-page feature showcase.
+  clip — embed a muted demonstration clip with a poster image and a graceful
+  fallback. Used by the landing-page feature showcase.
+
+  The inline clip autoplays ONCE and rests on its final frame (no loop, no
+  controls). It is a button: activating it opens the same sources in an overlay
+  at up to their native 1280px width, from the start, with browser controls, so
+  the clip is actually readable. Overlay behaviour lives in assets/js/clip.js,
+  loaded only on pages that use this shortcode — the shortcode sets the
+  "hasClip" page-store flag and layouts/_partials/custom/head-end.html reads it.
+  This mirrors how Hextra itself gates KaTeX behind "hasMath".
 
   Params:
     src     (string, required) basename under /media, WITHOUT extension.
@@ -22,19 +30,24 @@
 {{- $webm := printf "/media/%s.webm" $src | relURL -}}
 {{- $mp4 := printf "/media/%s.mp4" $src | relURL -}}
 {{- $posterURL := printf "/media/%s" $poster | relURL -}}
-<figure class="joe-clip not-prose" style="margin:1.5rem 0;">
-  <video
-    class="joe-clip__video"
-    style="width:100%;border-radius:0.75rem;border:1px solid rgba(128,128,128,0.25);display:block;"
-    poster="{{ $posterURL }}"
-    autoplay muted loop playsinline preload="none"
-    aria-label="{{ $alt }}">
-    <source src="{{ $webm }}" type="video/webm" />
-    <source src="{{ $mp4 }}" type="video/mp4" />
-    {{/* Graceful fallback when <video> or the sources are unavailable. */}}
-    <img src="{{ $posterURL }}" alt="{{ $alt }}" style="width:100%;border-radius:0.75rem;" />
-  </video>
+{{- .Page.Store.Set "hasClip" true -}}
+<figure class="joe-clip not-prose" data-joe-clip data-joe-clip-label="{{ $alt }}">
+  {{/* <video> without controls is not interactive content, so nesting it in the
+       button is valid and keeps the trigger keyboard-reachable for free. */}}
+  <button type="button" class="joe-clip__trigger" aria-label="Enlarge clip: {{ $alt }}">
+    <video
+      class="joe-clip__video"
+      poster="{{ $posterURL }}"
+      autoplay muted playsinline preload="none"
+      aria-label="{{ $alt }}">
+      <source src="{{ $webm }}" type="video/webm" />
+      <source src="{{ $mp4 }}" type="video/mp4" />
+      {{/* Graceful fallback when <video> or the sources are unavailable. */}}
+      <img src="{{ $posterURL }}" alt="{{ $alt }}" style="width:100%;border-radius:0.75rem;" />
+    </video>
+    <span class="joe-clip__hint" aria-hidden="true">Enlarge</span>
+  </button>
   {{- with $caption }}
-  <figcaption style="font-size:0.85rem;opacity:0.7;margin-top:0.5rem;text-align:center;">{{ . }}</figcaption>
+  <figcaption class="joe-clip__caption">{{ . }}</figcaption>
   {{- end }}
 </figure>

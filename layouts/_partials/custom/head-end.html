@@ -1,0 +1,18 @@
+{{- /*
+  Hextra head-end hook. Loads the clip-overlay script only on pages that use the
+  clip shortcode, which sets the "hasClip" page-store flag as it renders. This is
+  the same gate Hextra applies to KaTeX via "hasMath" (layouts/_partials/head.html);
+  the .WordCount call earlier in that partial has already forced the content —
+  and therefore the shortcode — to render by the time this runs.
+*/ -}}
+{{- if .Page.Store.Get "hasClip" -}}
+  {{- with resources.Get "js/clip.js" -}}
+    {{- $js := . -}}
+    {{- if hugo.IsProduction -}}
+      {{- $js = $js | minify | fingerprint -}}
+      <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+    {{- else -}}
+      <script defer src="{{ $js.RelPermalink }}"></script>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
