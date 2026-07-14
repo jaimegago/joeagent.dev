@@ -50,15 +50,12 @@ from the live state of your systems.
   <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
     <span style="opacity:0.5;">&rsaquo;&nbsp;</span>Users are reporting timeouts on checkout — help me find the cause.
   </div>
-  <div style="border:1px solid rgba(128,128,128,0.25);border-radius:0.75rem;padding:0.75rem 1rem;background:rgba(128,128,128,0.06);font-size:0.95rem;">
-    <span style="opacity:0.5;">&rsaquo;&nbsp;</span>Why has p95 latency on the payments API crept up this week?
-  </div>
 </div>
 
   </div>
   <div class="joe-feature-row__media">
 
-{{< clip src="feature-chat" caption="Chat + streamed agentic loop." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-chat" caption="Chat + streamed agentic loop — recorded on gemini-2.5-flash, a budget-tier model." alt="Demonstration clip coming soon." >}}
 
   </div>
 </div>
