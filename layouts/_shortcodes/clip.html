@@ -3,12 +3,13 @@
   fallback. Used by the landing-page feature showcase.
 
   The inline clip autoplays ONCE and rests on its final frame (no loop, no
-  controls). It is a button: activating it replays the same sources in an overlay
-  at up to their native 1280px width, big enough to actually read. The overlay
-  carries no controls either — a native control bar would grey out the bottom of
-  the frame, where these clips put their critical content, and its download /
-  playback-rate / PiP / volume affordances are all irrelevant. It plays once and
-  stops. Overlay behaviour lives in assets/js/clip.js,
+  controls). It is a button: activating it opens the same sources in an overlay at
+  up to their native 1280px width, big enough to actually read, continuing from
+  wherever the inline clip had got to. The overlay carries no controls either — a
+  native control bar would grey out the bottom of the frame, where these clips put
+  their critical content, and its download / playback-rate / PiP / volume
+  affordances are all irrelevant. It plays on and stops. Overlay behaviour lives
+  in assets/js/clip.js,
   loaded only on pages that use this shortcode — the shortcode sets the
   "hasClip" page-store flag and layouts/_partials/custom/head-end.html reads it.
   This mirrors how Hextra itself gates KaTeX behind "hasMath".

@@ -191,9 +191,9 @@ h1, h2, h3, h4, h5, h6,
 
 /* --- Demonstration clips + overlay ------------------------------------------ */
 /* Inline clips (layouts/_shortcodes/clip.html) play once and rest on their final
-   frame; the whole clip is a button that replays the same video in an overlay at
-   up to its native 1280px width. Neither has controls — the overlay just plays it
-   once, large, and stops. Behaviour: assets/js/clip.js. */
+   frame; the whole clip is a button that reopens the same video in an overlay at
+   up to its native 1280px width, continuing from the inline playhead. Neither has
+   controls — the overlay just plays on, large, and stops. Behaviour: assets/js/clip.js. */
 .joe-clip {
   margin: 1.5rem 0;
 }
