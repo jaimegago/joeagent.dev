@@ -1,7 +1,6 @@
 ---
 title: Joe Documentation
 description: Self-hosted, open-source AI agent for your infrastructure — governed by construction.
-breadcrumbs: false
 ---
 
 # Joe Documentation
