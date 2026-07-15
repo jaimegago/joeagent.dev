@@ -77,7 +77,7 @@ proposes the exact change. Execution stays behind the write floor.
   </div>
   <div class="joe-feature-row__media">
 
-{{< clip src="feature-graph" caption="Live infrastructure graph — the state Joe answers from." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-graph" caption="Joe's live map of your infrastructure, and a proposed fix held behind the write floor — recorded on gemini-2.5-flash, a budget-tier model." alt="Demonstration clip coming soon." >}}
 
   </div>
 </div>
