@@ -201,25 +201,31 @@ h1, h2, h3, h4, h5, h6,
   display: block;
   width: 100%;
   padding: 0;
-  border: 0;
   background: none;
   position: relative;
   cursor: zoom-in;
   border-radius: 0.75rem;
+  /* Clip the video's outer edge so gray lines baked into the recording
+     (window border/shadow at the frame edges) are hidden. Border lives
+     here rather than on the video so the scale nudge below doesn't crop it. */
+  overflow: hidden;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  transition: border-color 0.15s ease;
 }
 .joe-clip__video {
   display: block;
   width: 100%;
-  border-radius: 0.75rem;
-  border: 1px solid rgba(128, 128, 128, 0.25);
-  transition: border-color 0.15s ease;
+  /* Nudge the frame slightly outward; the trigger's overflow:hidden then
+     trims the edge artifacts. */
+  transform: scale(1.01);
+  transform-origin: center;
 }
-.joe-clip__trigger:hover .joe-clip__video,
-.joe-clip__trigger:focus-visible .joe-clip__video {
+.joe-clip__trigger:hover,
+.joe-clip__trigger:focus-visible {
   border-color: var(--joe-rust);
 }
-.dark .joe-clip__trigger:hover .joe-clip__video,
-.dark .joe-clip__trigger:focus-visible .joe-clip__video {
+.dark .joe-clip__trigger:hover,
+.dark .joe-clip__trigger:focus-visible {
   border-color: var(--joe-rust-on-dark);
 }
 /* Hover hint: a quiet chip in the corner, revealed on hover/keyboard focus. */
