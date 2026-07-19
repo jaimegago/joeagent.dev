@@ -66,6 +66,27 @@ Joe is not yet a public repository, CI cannot check it out, so `DOCS_SOURCE` def
 > in this repo is then retired. No curation filter is needed in the sync script: curation lives
 > upstream in Joe's `docs/public` tree, so this site consumes an already-public-ready source.
 
+### Re-seeding the committed copy (and the version stamp)
+
+Refresh the seeded `docs/public` copy from a local Joe checkout with:
+
+```sh
+./scripts/sync-docs.sh --seed-from /path/to/joe
+```
+
+This replaces `docs/public/` from that checkout's `docs/public` and, **in the same operation**,
+writes [`data/joe.yaml`](data/joe.yaml) from the checkout's git metadata — `version` (from
+`git describe --tags`, falling back to the literal `pre-release` when the repo has no tags),
+`commit`, `commit_short`, and `seeded_at` (UTC). Both are committed together, which is what makes
+the rendered claim true by construction: CI never checks Joe out and never regenerates the stamp,
+so the stamp cannot drift from the copy it describes. The script fails loudly and writes nothing if
+the given path is not a git checkout with readable metadata.
+
+Docs pages render that stamp as an unobtrusive footer line — *Documentation for Joe (pre-release),
+synced from commit `<short sha>`* — from
+[`layouts/_partials/custom/footer.html`](layouts/_partials/custom/footer.html). No version string
+is hardcoded anywhere in the tree.
+
 ## Media assets
 
 Feature-showcase clips live in `static/media/` under a fixed naming convention; the `clip`
