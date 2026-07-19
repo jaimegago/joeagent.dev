@@ -2,7 +2,7 @@
 # Describes the joe checkout that the committed docs/public copy was
 # seeded from. Committed (not gitignored) because it documents committed
 # content: CI never checks joe out and cannot regenerate this.
-version: "pre-release"
-commit: "00344fa26aac432257122b01a5815b4aeaea7934"
-commit_short: "00344fa"
-seeded_at: "2026-07-19T12:13:03Z"
+version: "v0.1.0"
+commit: "fa8e3baaded73cae4cdf7043d89235970b3ca0eb"
+commit_short: "fa8e3ba"
+seeded_at: "2026-07-19T18:23:44Z"
