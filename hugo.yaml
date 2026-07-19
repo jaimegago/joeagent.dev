@@ -140,3 +140,6 @@ params:
 
   # Author site — live.
   authorURL: "https://jaimegago.dev"
+  # Launch essay — background on who built Joe and why. Footer only; the landing
+  # page stays product-focused.
+  launchEssayURL: "https://jaimegago.dev/writing/announcing-joe-safety-layer/"
