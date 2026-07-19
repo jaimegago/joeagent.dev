@@ -21,7 +21,8 @@ layout: hextra-home
   your systems under its own identity — scoped, per-component credentials — and acts on them
   through tools typed read or mutate at boot. Bring your own model: Anthropic, Google, or any
   OpenAI-compatible endpoint, including one you host yourself. One binary, nothing else to
-  install. Read-only by default; built to make changes safely.
+  install. You operate Joe through its web UI — chat, infrastructure graph, and governance
+  controls in one place. Read-only by default; built to make changes safely.
 {{< /hextra/hero-subtitle >}}
 </div>
 
@@ -88,7 +89,7 @@ proposes the exact change. Execution stays behind the write floor.
 ### Ground your coding agent
 
 Connect Claude Code or any MCP-capable agent to Joe's MCP server. Edit your infra-as-code as
-usual, and let the agent check the change against Joe's live infrastructure graph before it
+usual, and let the agent check the change against Joe's live view of prod before it
 ships.
 
 <div class="hx:mt-4 hx:flex hx:flex-col hx:gap-3">
@@ -100,7 +101,7 @@ ships.
   </div>
   <div class="joe-feature-row__media">
 
-{{< clip src="feature-mcp" caption="Claude Code reads the diff, queries Joe's live graph over MCP, and answers from prod state." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-mcp" caption="Claude Code reads the diff, queries Joe over MCP, and answers from live prod state." alt="Demonstration clip coming soon." >}}
 
   </div>
 </div>

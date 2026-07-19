@@ -3,10 +3,9 @@
 
   Inline clips (layouts/_shortcodes/clip.html) autoplay once, muted, without
   controls, and rest on their final frame. Activating one opens the same sources
-  here at up to their native 1280px width — big enough to actually read — picking
-  up at the playhead the inline clip had reached, so enlarging reads as the same
-  playback continuing. The overlay carries no controls either: it plays on and
-  stops on its final frame, same as the inline clip.
+  here at up to their native 1280px width and replays them from time zero — big
+  enough to actually read. The overlay carries no controls either: it plays once
+  and stops on its final frame, same as the inline clip.
 
   Loaded only on pages that use the clip shortcode — see custom/head-end.html.
   One overlay is built lazily and reused by every clip on the page. No focus-trap
@@ -73,21 +72,12 @@
     var inline = figure.querySelector("video");
     if (inline) inline.pause();
 
-    // Pick the overlay up where the inline clip was, so enlarging feels like the
-    // same playback continuing rather than a restart. The exception is a clip
-    // that has already run out: resuming at its final frame would show nothing,
-    // so that one replays from the top.
-    var startAt = inline && !inline.ended ? inline.currentTime : 0;
-
-    // Re-point the overlay video at this figure's sources, carrying the playhead
-    // as a media fragment. Assigning currentTime on loadedmetadata instead loses
-    // a race with the element's own resource selection — the pending seek is
-    // clobbered and playback lands back at 0 — whereas #t= is honoured natively.
+    // Re-point the overlay video at this figure's sources.
     overlayVideo.innerHTML = "";
     var sources = figure.querySelectorAll("source");
     for (var i = 0; i < sources.length; i++) {
       var s = document.createElement("source");
-      s.src = sources[i].src.split("#")[0] + (startAt > 0.1 ? "#t=" + startAt : "");
+      s.src = sources[i].src.split("#")[0];
       s.type = sources[i].type;
       overlayVideo.appendChild(s);
     }
@@ -102,6 +92,7 @@
     document.documentElement.classList.add("joe-clip-overlay-open");
 
     overlayVideo.load(); // pick up the swapped <source> list
+    overlayVideo.currentTime = 0;
     var played = overlayVideo.play();
     // A blocked autoplay is not worth handling: the clip is muted, which is the
     // case browsers allow.
