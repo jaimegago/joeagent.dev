@@ -19,3 +19,4 @@ content/docs/
 node_modules/
 .vscode/
 .idea/
+.claude/
