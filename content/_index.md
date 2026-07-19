@@ -101,7 +101,7 @@ ships.
   </div>
   <div class="joe-feature-row__media">
 
-{{< clip src="feature-mcp" caption="Claude Code reads the diff, queries Joe over MCP, and answers from live prod state." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-mcp" caption="Claude Code reads the diff, queries Joe over MCP, and answers from live prod state. Recorded on Joe gemini-2.5-flash, Claude Code Opus 4.8." alt="Demonstration clip coming soon." >}}
 
   </div>
 </div>
