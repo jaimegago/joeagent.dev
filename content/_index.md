@@ -56,7 +56,7 @@ from the live state of your systems.
   </div>
   <div class="joe-feature-row__media">
 
-{{< clip src="feature-chat" caption="Chat + streamed agentic loop — recorded on gemini-2.5-flash, a budget-tier model." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-chat" caption="Chat + streamed agentic loop — recorded on gemini-2.5-flash, a budget-tier model." poster="feature-chat.poster.webp" alt="Screen recording: Joe investigates checkout timeouts in chat, calling Kubernetes tools and recommending fixes for a failing readiness probe and an out-of-memory service." >}}
 
   </div>
 </div>
@@ -78,7 +78,7 @@ proposes the exact change. Execution stays behind the write floor.
   </div>
   <div class="joe-feature-row__media">
 
-{{< clip src="feature-graph" caption="Joe's live map of your infrastructure, and a proposed fix held behind the write floor — recorded on gemini-2.5-flash, a budget-tier model." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-graph" caption="Joe's live map of your infrastructure, and a proposed fix held behind the write floor — recorded on gemini-2.5-flash, a budget-tier model." poster="feature-graph.poster.webp" alt="Screen recording: Joe's infrastructure graph of a Kubernetes cluster, then a chat where Joe proposes raising the orders service's memory limit without applying it." >}}
 
   </div>
 </div>
@@ -101,7 +101,7 @@ ships.
   </div>
   <div class="joe-feature-row__media">
 
-{{< clip src="feature-mcp" caption="Claude Code reads the diff, queries Joe over MCP, and answers from live prod state. Recorded on Joe gemini-2.5-flash, Claude Code Opus 4.8." alt="Demonstration clip coming soon." >}}
+{{< clip src="feature-mcp" caption="Claude Code reads the diff, queries Joe over MCP, and answers from live prod state. Recorded on Joe gemini-2.5-flash, Claude Code Opus 4.8." poster="feature-mcp.poster.webp" alt="Screen recording: Claude Code asks Joe over MCP whether a change is safe for prod and answers no, citing the live orders pod already crash-looping at its memory limit." >}}
 
   </div>
 </div>

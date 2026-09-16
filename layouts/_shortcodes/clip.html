@@ -20,17 +20,17 @@
     poster  (string)           poster image path under /media; defaults to the
                                shared placeholder poster.
     caption (string)           optional caption shown under the clip.
-    alt     (string)           text shown when the clip cannot load / for a11y.
+    alt     (string)           describes what the clip shows; used as the accessible
+                               name and as the fallback image's alt text.
 
-  Media conventions live in static/media/README.md. No real media is committed
-  in the skeleton — these slots are placeholders.
+  Media conventions live in static/media/README.md.
 
   @example {{< clip src="feature-chat" caption="Chat over the agentic loop." >}}
 */ -}}
 {{- $src := .Get "src" -}}
 {{- $poster := .Get "poster" | default "placeholder-poster.svg" -}}
 {{- $caption := .Get "caption" -}}
-{{- $alt := .Get "alt" | default "Demonstration clip — coming soon." -}}
+{{- $alt := .Get "alt" | default "Demonstration clip." -}}
 {{- $webm := printf "/media/%s.webm" $src | relURL -}}
 {{- $mp4 := printf "/media/%s.mp4" $src | relURL -}}
 {{- $posterURL := printf "/media/%s" $poster | relURL -}}
