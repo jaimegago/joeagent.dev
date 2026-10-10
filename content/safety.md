@@ -186,7 +186,7 @@ This is a rejection, not a gap in the roadmap, and the reasoning is the whole sa
 
 The cost is real: new capability means a native adapter, written and classified in Joe's tree, at author time, under review. That is slower than pointing at a server. It is also the only version of the guarantee this page has been describing. And the stance is about MCP as it stands, not a verdict on the protocol: if MCP gains an effect declaration a client can actually enforce, the objection dissolves and the direction reopens. The full reasoning, including the native-adapter path, is on the [Joe and MCP]({{< relref "/docs/concepts/joe-and-mcp" >}}) page.
 
-One precision note in the spirit of this page: the read-only nature of Joe's own MCP surface is a property of its construction — each exposed tool is hardwired to a query method — rather than an entry in the classification table, and the absence of an MCP client, while true of the tree today, is not yet pinned by a guard test the way the credential invariants are.
+The absence of an MCP client is pinned the way the credential invariants are: a guard test walks the repository and fails the build if any package imports an MCP library beyond the server and its protocol types — so adding a client, from any MCP library, is a deliberate change to the test rather than something that slips in. One precision note in the spirit of this page: the read-only nature of Joe's own MCP surface is a property of its construction — each exposed tool is hardwired to a query method — rather than an entry in the classification table.
 
 ## The roadmap, plainly labeled
 
@@ -198,7 +198,7 @@ A richer access model travels with it: grant-based zoned reads, role indirection
 
 The provenance assertion extends the [identity section's](#joes-own-identity) model: carrying originator, actor, and action as a structured assertion through the pipeline, so Joe's records distinguish "Joe acting autonomously" from "Joe acting on Alice's instruction" as data rather than convention. Design-settled, tracked, not built.
 
-And a set of smaller hardenings this page has already pointed at, tracked in the open backlog: routing the core agent's graph-refresh writes through the pipeline (the [gate-pipeline section's](#the-gate-pipeline) stated exception), durable audit rows for skill lifecycle events and a load-time integrity posture for skill content (the [identity section's](#joes-own-identity) boundaries), the guard test pinning the no-MCP-client invariant (the precision note above), and audit rows for panic and unlock (the [panic section's](#panic-and-recovery) second boundary). Each of these appears in its section above as a boundary; this list is those boundaries with tracking numbers, not new admissions.
+And a set of smaller hardenings this page has already pointed at, tracked in the open backlog: routing the core agent's graph-refresh writes through the pipeline (the [gate-pipeline section's](#the-gate-pipeline) stated exception), durable audit rows for skill lifecycle events and a load-time integrity posture for skill content (the [identity section's](#joes-own-identity) boundaries), and audit rows for panic and unlock (the [panic section's](#panic-and-recovery) second boundary). Each of these appears in its section above as a boundary; this list is those boundaries with tracking numbers, not new admissions.
 
 ## Evaluated by OASIS
 
