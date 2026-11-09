@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Social preview card for joeagent.dev — SOURCE of static/images/joe-social.png.
+
+  Regenerate the PNG with `make social-card` (scripts/render-social-card.sh).
+  Never hand-export: edit this file, re-run the command, commit both.
+
+  Canvas 1200×630 (the 1.91:1 that LinkedIn, Slack, X and friends expect).
+  Everything sits inside the central 630×630 square (x 285–915), so a platform
+  cropping to a square or to 1.91:1 loses only background.
+
+  Brand only: lockup dark #211D19, accent #C05F2E, the site's light background
+  (#fff, Hextra's `- -hx-color-white`), and the site's own faces — Zilla Slab
+  (headings) for the tagline, IBM Plex Mono (code) for the address. The lockup
+  group below is static/images/joe-lockup.svg verbatim; keep them in step.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#ffffff"/>
+
+  <!-- Lockup: viewBox -10 -8 404 156 scaled ×1.35 → 545×211, centred at x=600, top y=104. -->
+  <g transform="translate(327.5 104) scale(1.35) translate(10 8)">
+    <g>
+      <circle cx="70" cy="12" r="11" fill="#211D19"/>
+      <line x1="70" y1="16" x2="22" y2="70" stroke="#211D19" stroke-width="10" stroke-linecap="round"/>
+      <line x1="70" y1="16" x2="118" y2="70" stroke="#211D19" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="22" cy="79" r="16" fill="#C05F2E"/>
+      <circle cx="118" cy="79" r="16" fill="#C05F2E"/>
+      <rect x="64.0" y="16" width="12" height="102" rx="4" fill="#211D19"/>
+      <rect x="28" y="112" width="84" height="12" rx="4" fill="#211D19"/>
+    </g>
+    <g transform="translate(195,10)">
+      <circle cx="16" cy="15" r="8.5" fill="#211D19"/>
+      <path d="M 16 36 L 16 106 A 19 19 0 0 1 -18 110" fill="none" stroke="#211D19" stroke-width="13" stroke-linecap="round"/>
+      <circle cx="71" cy="68" r="27.5" fill="none" stroke="#211D19" stroke-width="13"/>
+      <path d="M 124.5 68 H 179.5 A 27.5 27.5 0 1 0 172.4 86.4" fill="none" stroke="#211D19" stroke-width="13" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- Tagline, derived from the site's meta description. -->
+  <g font-family="Zilla Slab" font-weight="600" font-size="36" fill="#211D19" text-anchor="middle">
+    <text x="600" y="412">Self-hosted, open-source, governed</text>
+    <text x="600" y="458">AI agent for your infrastructure.</text>
+  </g>
+
+  <text x="600" y="540" font-family="IBM Plex Mono" font-weight="500" font-size="28" fill="#C05F2E" text-anchor="middle">joeagent.dev</text>
+</svg>

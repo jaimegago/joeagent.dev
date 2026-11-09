@@ -1,0 +1,37 @@
+{{- /*
+  Social metadata for every page — Open Graph and Twitter card, defined once.
+
+  Overrides Hextra's opengraph.html (layouts/_partials/opengraph.html in the
+  theme), which Hextra's head.html calls on every page. The theme's version
+  emits no image unless params.images is set, no og:site_name (it reads
+  params.title, which this site does not set), and wraps og:description and
+  og:type in template whitespace that survives into the attribute. Twitter
+  tags live here too, so twitter_cards.html beside this file is intentionally
+  empty — otherwise Hugo's embedded twitter_cards template would emit a second,
+  conflicting `summary` card.
+
+  Title and description: the page's own when it has them, else the site's
+  (hugo.yaml title / params.description). Image: one site-wide card from
+  params.socialCard; its PNG is generated from scripts/social-card.svg by
+  `make social-card`.
+*/ -}}
+{{- $title := .Title | default site.Title -}}
+{{- $desc := .Description | default site.Params.description | plainify | htmlUnescape -}}
+{{- $type := cond .IsPage "article" "website" -}}
+{{- $card := site.Params.socialCard -}}
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ $type }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+{{- with $card }}
+{{- $img := .path | absURL }}
+<meta property="og:image" content="{{ $img }}">
+<meta property="og:image:width" content="{{ .width }}">
+<meta property="og:image:height" content="{{ .height }}">
+<meta property="og:image:alt" content="{{ .alt }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $img }}">
+{{- end }}

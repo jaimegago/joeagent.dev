@@ -1,4 +1,4 @@
-.PHONY: dev build sync clean update-theme
+.PHONY: dev build sync clean update-theme social-card
 
 HUGO ?= hugo
 
@@ -21,6 +21,12 @@ dev: sync
 # Production build. Syncs docs first, then builds minified output.
 build: sync
 	$(HUGO) --gc --minify
+
+# Regenerate the social preview card (static/images/joe-social.png) from its
+# source, scripts/social-card.svg. Needs rsvg-convert (brew install librsvg).
+# `scripts/render-social-card.sh --check` verifies the committed PNG instead.
+social-card:
+	./scripts/render-social-card.sh
 
 clean:
 	rm -rf public resources content/docs

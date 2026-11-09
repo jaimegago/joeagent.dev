@@ -69,6 +69,15 @@ menu:
 params:
   description: "Joe is the self-hosted, open-source AI agent for your infrastructure — governed by construction. Bring your own LLM provider key."
 
+  # Social preview card — og:image / twitter:image on every page, emitted by
+  # layouts/_partials/opengraph.html. The PNG is GENERATED from
+  # scripts/social-card.svg by `make social-card`; edit the SVG, never the PNG.
+  socialCard:
+    path: images/joe-social.png
+    width: 1200
+    height: 630
+    alt: "Joe lockup above the tagline: Self-hosted, open-source, governed AI agent for your infrastructure. joeagent.dev"
+
   # Dark mode is the default per the design brief; toggle stays available.
   theme:
     # light | dark | system

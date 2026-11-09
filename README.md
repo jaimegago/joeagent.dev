@@ -20,6 +20,10 @@ GitHub Pages from `main` by `.github/workflows/hugo.yml`. The custom domain is s
 - `layouts/_shortcodes/clip.html` — the demonstration-clip shortcode.
 - `layouts/_partials/custom/footer.html` — site-wide footer links (Hextra hook).
 - `scripts/sync-docs.sh` — the docs single-source sync step.
+- `layouts/_partials/opengraph.html` — Open Graph and Twitter card tags, every page (see Social
+  preview card).
+- `scripts/social-card.svg` — source of the social preview image; `scripts/render-social-card.sh`
+  renders it.
 - `static/media/` — feature-showcase media (see Media assets).
 
 ## Theme
@@ -41,6 +45,25 @@ make dev      # syncs docs, then runs `hugo server`
 
 Open <http://localhost:1313>. `make build` produces the minified site in `public/`. `make sync`
 runs only the docs sync; `make clean` removes build output and the generated docs tree.
+
+## Social preview card
+
+Links to the site render a branded card (LinkedIn, Slack, X, …) from
+`static/images/joe-social.png`, a 1200×630 PNG served at `https://joeagent.dev/images/joe-social.png`.
+`layouts/_partials/opengraph.html` emits the `og:*` and `twitter:*` tags on every page, using the
+page's own title and description where it has them and the site's otherwise; the image, its size
+and its alt text come from `params.socialCard` in `hugo.yaml`.
+
+The PNG is **generated, never hand-exported**. Its source is `scripts/social-card.svg` — the
+lockup, a tagline and the address, in the brand palette and the brand faces from `brand/fonts/`.
+After editing the SVG:
+
+```sh
+make social-card     # renders the PNG with rsvg-convert (brew install librsvg)
+```
+
+`scripts/render-social-card.sh --check` renders to a temp file and compares it with the committed
+PNG, so a drifted image can be caught without overwriting it. Commit the SVG and the PNG together.
 
 ## Docs sync (single-source)
 
