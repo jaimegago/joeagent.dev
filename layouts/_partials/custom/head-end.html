@@ -18,3 +18,13 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
+
+{{- /*
+  GoatCounter: cookie-free visit counter, production only — mirrors
+  jaimegago.dev's themes/jaime/layouts/partials/analytics.html.
+*/ -}}
+{{- if and hugo.IsProduction (not hugo.IsServer) -}}
+  {{- with site.Params.goatcounterURL -}}
+    <script data-goatcounter="{{ . }}" async src="//gc.zgo.at/count.js"></script>
+  {{- end -}}
+{{- end -}}

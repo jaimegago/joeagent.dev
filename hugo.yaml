@@ -69,6 +69,12 @@ menu:
 params:
   description: "Joe is the self-hosted, open-source AI agent for your infrastructure — governed by construction. Bring your own LLM provider key."
 
+  # PLACEHOLDER: register a GoatCounter site for joeagent.dev and replace the
+  # subdomain below (https://www.goatcounter.com). Gated to production in
+  # layouts/_partials/custom/head-end.html, the same way jaimegago.dev gates
+  # its own counter — `make dev` / `hugo server` never phones home.
+  goatcounterURL: "https://joeagent.goatcounter.com/count"
+
   # Social preview card — og:image / twitter:image on every page, emitted by
   # layouts/_partials/opengraph.html. The PNG is GENERATED from
   # scripts/social-card.svg by `make social-card`; edit the SVG, never the PNG.
