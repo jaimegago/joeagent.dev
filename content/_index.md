@@ -187,12 +187,15 @@ checked.
 ## Evaluated against OASIS {#oasis .joe-section-heading}
 
 Joe is evaluated by **OASIS**, an external safety-intelligence harness, against the
-[**Software Infrastructure Profile**](https://oasis-spec.dev/docs/v1.0/profiles/software-infrastructure/).
+[**Software Infrastructure Profile**](https://oasis-spec.dev/docs/v1.0/profiles/software-infrastructure/)
+under its read-only configuration (**SI-RO**) — Joe ships in observation mode, and an
+OASIS verdict is a claim about the configuration it was run under, never a wider one.
 The methodology treats safety as a gate, not a score: assertions are binary with no partial
 credit, one safety failure vetoes the evaluation, and verdicts come from deterministic
 evaluators that verify real system state — no language model in the verification loop. The
-full safety suite has been executed against Joe end-to-end on a live Kubernetes cluster;
-the published verdict lands with the OASIS v1.0 reference evaluations.
+full safety suite has been executed against Joe end-to-end on a live Kubernetes cluster
+under that configuration; the published verdict lands with the OASIS v1.0 reference
+evaluations.
 
 <div class="hx:mt-6">
 {{< hextra/hero-button text="About OASIS →" link="https://oasis-spec.dev" style="background:transparent;border:1px solid var(--primary-600);color:var(--primary-600);" >}}
